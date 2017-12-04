@@ -16,13 +16,12 @@ namespace DLiteAuthFrame.Base.Model
 
         protected override void Seed(DLAuthContext context)
         {
-            context.User.AddRange(GetUser());           
+            context.User.AddRange(GetUser());
             context.Menu.AddRange(GetMenu());
             context.Role.AddRange(GetRole());
             context.Organization.AddRange(GetOrg());
-
             context.UserRole.AddRange(GetUserRole());
-
+            context.OrgUser.AddRange(GetOrgUser());
             context.SaveChanges();
             base.Seed(context);
         }
@@ -70,7 +69,7 @@ namespace DLiteAuthFrame.Base.Model
                     CreaterDate=DateTime.Now,
                     UpdateDate=null,
                     UpdateUserCode=null
-                },
+                },                
                 new Menu
                 {
                     MenuCode=Guid.NewGuid(),
@@ -91,9 +90,39 @@ namespace DLiteAuthFrame.Base.Model
                     MenuCode=Guid.NewGuid(),
                     ParentMenuCode=SysSetID,
                     SortNo = 0,
+                    MenuName="角色管理",
+                    MenuExplain="",
+                    Url="/Role/Index",
+                    IsVisible=true,
+                    IsEnable=false,
+                    CreateUserCode=UserID,
+                    CreaterDate=DateTime.Now,
+                    UpdateDate=null,
+                    UpdateUserCode=null
+                },
+                new Menu
+                {
+                    MenuCode=Guid.NewGuid(),
+                    ParentMenuCode=SysSetID,
+                    SortNo = 0,
                     MenuName="用户管理",
                     MenuExplain="",
                     Url="/User/Index",
+                    IsVisible=true,
+                    IsEnable=false,
+                    CreateUserCode=UserID,
+                    CreaterDate=DateTime.Now,
+                    UpdateDate=null,
+                    UpdateUserCode=null
+                },
+                new Menu
+                {
+                    MenuCode=Guid.NewGuid(),
+                    ParentMenuCode=SysSetID,
+                    SortNo = 0,
+                    MenuName="菜单管理",
+                    MenuExplain="",
+                    Url="/Memu/Index",
                     IsVisible=true,
                     IsEnable=false,
                     CreateUserCode=UserID,
