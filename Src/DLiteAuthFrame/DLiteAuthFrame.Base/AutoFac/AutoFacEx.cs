@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Autofac.Core;
 using Autofac.Integration.Mvc;
+using DLiteAuthFrame.APP.APP;
+using DLiteAuthFrame.APP.IApp;
 using DLiteAuthFrame.Base.Model;
 using DLiteAuthFrame.Base.Repository;
 using DLiteAuthFrame.Domain.IRepository;
@@ -34,8 +36,9 @@ namespace DLiteAuthFrame.Base.AutoFac
 
             builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork)).InstancePerDependency();
 
-            builder.RegisterType(typeof(IUserService)).As(typeof(IUserService)).InstancePerDependency();
+            builder.RegisterType(typeof(UserService)).As(typeof(IUserService)).InstancePerDependency();
 
+            builder.RegisterType(typeof(AuthApp)).As(typeof(IAuthApp)).InstancePerDependency().PropertiesAutowired();
 
             //注册app层
             //builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(UserManagerApp)));
