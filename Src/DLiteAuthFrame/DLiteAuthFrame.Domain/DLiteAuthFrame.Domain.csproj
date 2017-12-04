@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BCAD078C-9E25-47C4-B1B8-80F1399972F0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DLiteAuthFrame.Domain</RootNamespace>
+    <AssemblyName>DLiteAuthFrame.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IRepository\IUserRository.cs" />
+    <Compile Include="IRepository\IRepository.cs" />
+    <Compile Include="IRepository\IUnitOfWork.cs" />
+    <Compile Include="IServices\IAuthservices\IButtonService.cs" />
+    <Compile Include="IServices\IAuthservices\IMemuService.cs" />
+    <Compile Include="IServices\IAuthservices\IOrgService.cs" />
+    <Compile Include="IServices\IAuthservices\IRoleService.cs" />
+    <Compile Include="IServices\IAuthservices\IUserService.cs" />
+    <Compile Include="Model\ButtonLibrary.cs" />
+    <Compile Include="Model\Code.cs" />
+    <Compile Include="Model\CodeType.cs" />
+    <Compile Include="Model\LoginLog.cs" />
+    <Compile Include="Model\Menu.cs" />
+    <Compile Include="Model\MenuButton.cs" />
+    <Compile Include="Model\Organization.cs" />
+    <Compile Include="Model\OrgRole.cs" />
+    <Compile Include="Model\OrgUser.cs" />
+    <Compile Include="Model\Role.cs" />
+    <Compile Include="Model\RoleAuth.cs" />
+    <Compile Include="Model\RoleMenu.cs" />
+    <Compile Include="Model\RoleMenuButton.cs" />
+    <Compile Include="Model\RoleSetAuth.cs" />
+    <Compile Include="Model\SetAuthCode.cs" />
+    <Compile Include="Model\SystemLog.cs" />
+    <Compile Include="Model\SystemParameter.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserRole.cs" />
+    <Compile Include="Model\UserSet.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AuthServices\ButtonService.cs" />
+    <Compile Include="Services\AuthServices\MemuService.cs" />
+    <Compile Include="Services\AuthServices\OrgService.cs" />
+    <Compile Include="Services\AuthServices\RoleService.cs" />
+    <Compile Include="Services\AuthServices\UserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DLiteAuthFrame.Comm\DLiteAuthFrame.Common.csproj">
+      <Project>{4ba15583-9dd3-4917-be0b-61b05ca26e91}</Project>
+      <Name>DLiteAuthFrame.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

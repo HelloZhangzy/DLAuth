@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 Ui", "1 Ui", "{A76B6AD4-FEA8-4C05-8E6A-4D8AAFCEACD8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 APP", "2 APP", "{DDB19679-AF03-4D71-8074-4D83D42C2B6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 Domain", "3 Domain", "{910A727E-D113-4BC1-97C2-959438B1E746}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 Base", "4 Base", "{C6662BA1-38E5-4F54-8E84-E96E56D1256C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 UnitTest", "5 UnitTest", "{1A52AFE5-D942-4D92-A8E4-99052CF9B9D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLiteAuthFrame.Web", "DLiteAuthFrame.Web\DLiteAuthFrame.Web.csproj", "{DB1D1D66-7B33-4D4C-BADF-E1198A9377FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLiteAuthFrame.APP", "DLiteAuthFrame.APP\DLiteAuthFrame.APP.csproj", "{1B052E1C-67BC-47AA-AE2D-4A6BB88CEED1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLiteAuthFrame.Domain", "DLiteAuthFrame.Domain\DLiteAuthFrame.Domain.csproj", "{BCAD078C-9E25-47C4-B1B8-80F1399972F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLiteAuthFrame.Common", "DLiteAuthFrame.Comm\DLiteAuthFrame.Common.csproj", "{4BA15583-9DD3-4917-BE0B-61B05CA26E91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLiteAuthFrame.Base", "DLiteAuthFrame.Base\DLiteAuthFrame.Base.csproj", "{6BD657E2-2946-4D39-A2AE-C8884829FFA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLiteAuthFrame.UnitTest", "DLiteAuthFrame.UnitTest\DLiteAuthFrame.UnitTest.csproj", "{28085AA9-FAAB-4726-BDB6-7AD7ED1731E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB1D1D66-7B33-4D4C-BADF-E1198A9377FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB1D1D66-7B33-4D4C-BADF-E1198A9377FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB1D1D66-7B33-4D4C-BADF-E1198A9377FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB1D1D66-7B33-4D4C-BADF-E1198A9377FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B052E1C-67BC-47AA-AE2D-4A6BB88CEED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B052E1C-67BC-47AA-AE2D-4A6BB88CEED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B052E1C-67BC-47AA-AE2D-4A6BB88CEED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B052E1C-67BC-47AA-AE2D-4A6BB88CEED1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCAD078C-9E25-47C4-B1B8-80F1399972F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCAD078C-9E25-47C4-B1B8-80F1399972F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCAD078C-9E25-47C4-B1B8-80F1399972F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCAD078C-9E25-47C4-B1B8-80F1399972F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BA15583-9DD3-4917-BE0B-61B05CA26E91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BA15583-9DD3-4917-BE0B-61B05CA26E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BA15583-9DD3-4917-BE0B-61B05CA26E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BA15583-9DD3-4917-BE0B-61B05CA26E91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BD657E2-2946-4D39-A2AE-C8884829FFA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BD657E2-2946-4D39-A2AE-C8884829FFA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BD657E2-2946-4D39-A2AE-C8884829FFA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BD657E2-2946-4D39-A2AE-C8884829FFA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28085AA9-FAAB-4726-BDB6-7AD7ED1731E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28085AA9-FAAB-4726-BDB6-7AD7ED1731E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28085AA9-FAAB-4726-BDB6-7AD7ED1731E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28085AA9-FAAB-4726-BDB6-7AD7ED1731E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DB1D1D66-7B33-4D4C-BADF-E1198A9377FA} = {A76B6AD4-FEA8-4C05-8E6A-4D8AAFCEACD8}
+		{1B052E1C-67BC-47AA-AE2D-4A6BB88CEED1} = {DDB19679-AF03-4D71-8074-4D83D42C2B6F}
+		{BCAD078C-9E25-47C4-B1B8-80F1399972F0} = {910A727E-D113-4BC1-97C2-959438B1E746}
+		{4BA15583-9DD3-4917-BE0B-61B05CA26E91} = {C6662BA1-38E5-4F54-8E84-E96E56D1256C}
+		{6BD657E2-2946-4D39-A2AE-C8884829FFA1} = {C6662BA1-38E5-4F54-8E84-E96E56D1256C}
+		{28085AA9-FAAB-4726-BDB6-7AD7ED1731E9} = {1A52AFE5-D942-4D92-A8E4-99052CF9B9D3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C78C6E34-E2BC-4212-BEBA-928FAF876BDB}
+	EndGlobalSection
+EndGlobal

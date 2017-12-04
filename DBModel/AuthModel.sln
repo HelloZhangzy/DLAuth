@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthModel", "AuthModel.csproj", "{7357D176-D5F8-47A4-9FBD-F21473C6C031}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{7357D176-D5F8-47A4-9FBD-F21473C6C031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7357D176-D5F8-47A4-9FBD-F21473C6C031}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7357D176-D5F8-47A4-9FBD-F21473C6C031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7357D176-D5F8-47A4-9FBD-F21473C6C031}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

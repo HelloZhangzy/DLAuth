@@ -1,0 +1,6 @@
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\DLiteAuthFrame.APP.dll
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\DLiteAuthFrame.APP.pdb
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\obj\Debug\DLiteAuthFrame.APP.csprojResolveAssemblyReference.cache
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\obj\Debug\DLiteAuthFrame.APP.csproj.CoreCompileInputs.cache
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\obj\Debug\DLiteAuthFrame.APP.dll
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\obj\Debug\DLiteAuthFrame.APP.pdb
