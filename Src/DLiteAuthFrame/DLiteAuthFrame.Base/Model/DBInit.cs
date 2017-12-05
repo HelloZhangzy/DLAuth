@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,13 +17,17 @@ namespace DLiteAuthFrame.Base.Model
 
         protected override void Seed(DLAuthContext context)
         {
-            context.User.AddRange(GetUser());
-            context.Menu.AddRange(GetMenu());
-            context.Role.AddRange(GetRole());
-            context.Organization.AddRange(GetOrg());
-            context.UserRole.AddRange(GetUserRole());
-            context.OrgUser.AddRange(GetOrgUser());
+            
+
+            context.Users.AddRange(GetUser());
+            context.Menus.AddRange(GetMenu());
+            context.Roles.AddRange(GetRole());
+            context.Organizations.AddRange(GetOrg());
             context.SaveChanges();
+            context.UserRoles.AddRange(GetUserRole());
+            context.OrgUsers.AddRange(GetOrgUser());
+            context.SaveChanges();
+
             base.Seed(context);
         }
 

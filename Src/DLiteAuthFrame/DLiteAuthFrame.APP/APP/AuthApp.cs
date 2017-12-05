@@ -10,7 +10,12 @@ namespace DLiteAuthFrame.APP.APP
 {
     public class AuthApp : IAuthApp
     {
-        public IUserService User { get; set; }
+        private  IUserService User { get; set; }
+
+        public AuthApp(IUserService _user)
+        {
+            User = _user;
+        }
 
         public bool Login(string Name, string Pass)
         {

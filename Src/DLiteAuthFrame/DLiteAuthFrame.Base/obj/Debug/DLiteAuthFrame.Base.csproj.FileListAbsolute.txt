@@ -40,11 +40,14 @@ D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\System.W
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\System.Web.WebPages.xml
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAuthFrame.APP.dll
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAuthFrame.APP.pdb
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAuthFrame.Base.dll.config
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAuthFrame.Base.dll
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAuthFrame.Base.pdb
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\Autofac.dll
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\Autofac.Integration.Mvc.dll
+D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAuthFrame.APP.dll
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAuthFrame.Comm.dll
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAuthFrame.Domain.dll
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\EntityFramework.dll
@@ -61,6 +64,7 @@ D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\Newt
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\log4net.dll
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\NPOI.dll
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAuthFrame.APP.pdb
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAuthFrame.Comm.pdb
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAuthFrame.Domain.pdb
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\Autofac.xml

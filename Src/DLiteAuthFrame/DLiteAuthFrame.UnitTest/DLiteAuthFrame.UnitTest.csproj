@@ -49,6 +49,12 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="UnitTest1.cs" />
@@ -66,6 +72,10 @@
     <ProjectReference Include="..\DLiteAuthFrame.Domain\DLiteAuthFrame.Domain.csproj">
       <Project>{bcad078c-9e25-47c4-b1b8-80f1399972f0}</Project>
       <Name>DLiteAuthFrame.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DLiteAuthFrame.Web\DLiteAuthFrame.Web.csproj">
+      <Project>{db1d1d66-7b33-4d4c-badf-e1198a9377fa}</Project>
+      <Name>DLiteAuthFrame.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

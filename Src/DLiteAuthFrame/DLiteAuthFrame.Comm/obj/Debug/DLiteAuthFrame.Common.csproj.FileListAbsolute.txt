@@ -14,8 +14,6 @@ D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Comm\bin\Debug\NPOI.Ope
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Comm\bin\Debug\log4net.xml
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Comm\bin\Debug\Newtonsoft.Json.xml
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Comm\bin\Debug\NPOI.xml
-D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Comm\bin\Debug\System.Web.Mvc.xml
-D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Comm\bin\Debug\zh-Hans\System.Web.Mvc.resources.dll
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Comm\bin\Debug\DLiteAuthFrame.Comm.dll
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Comm\bin\Debug\DLiteAuthFrame.Comm.pdb
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Comm\bin\Debug\ICSharpCode.SharpZipLib.dll
@@ -31,6 +29,6 @@ D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Comm\bin\Debug\Newt
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Comm\bin\Debug\NPOI.xml
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Comm\bin\Debug\System.Web.Mvc.xml
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Comm\bin\Debug\zh-Hans\System.Web.Mvc.resources.dll
-D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Comm\obj\Debug\DLiteAuthFrame.Common.csprojResolveAssemblyReference.cache
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Comm\obj\Debug\DLiteAuthFrame.Comm.dll
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Comm\obj\Debug\DLiteAuthFrame.Comm.pdb
+D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Comm\obj\Debug\DLiteAuthFrame.Common.csprojResolveAssemblyReference.cache
