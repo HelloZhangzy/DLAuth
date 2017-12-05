@@ -1,6 +1,7 @@
-﻿using DLiteAuthFrame.Base.AutoFac;
+﻿using DLiteAuthFrame.Base.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -14,7 +15,9 @@ namespace DLiteAuthFrame.Web
     {
         protected void Application_Start()
         {
-            AutofacExt.InitAutofac();
+            //Database.SetInitializer(new DBInit());
+
+           
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
@@ -22,6 +25,9 @@ namespace DLiteAuthFrame.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             
+            AutofacConfig.InitAutofac();
+           // AutofacExt.Resolve<DbContext>();
+            //  Database.SetInitializer(new DBInit() );
         }
     }
 }

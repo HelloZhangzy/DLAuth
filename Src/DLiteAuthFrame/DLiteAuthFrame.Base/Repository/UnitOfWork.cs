@@ -52,9 +52,9 @@ namespace DLiteAuthFrame.Base.Repository
 
         public IRepository<T> GetRepository<T>() where T : class
         {
-            var typeName = typeof(T).Name; 
+            var typeName = typeof(T).Name;
             
-            var repositoryInstance = AutofacExt.Resolve<IRepository<T>>(new NamedParameter("context", _dbContext));
+            var repositoryInstance =AutofacExt.Resolve<IRepository<T>>(new NamedParameter("context", _dbContext));
 
             return repositoryInstance;
         }

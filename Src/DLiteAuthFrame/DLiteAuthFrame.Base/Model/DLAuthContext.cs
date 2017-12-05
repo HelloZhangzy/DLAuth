@@ -10,31 +10,31 @@ namespace DLiteAuthFrame.Base.Model
 {
     public partial class DLAuthContext : DbContext
     {
-        public DLAuthContext() : base("name=DLAuthContext")
+        public DLAuthContext() : base("DLAuthContext")
         {
-            
+           // Database.SetInitializer(new DBInit());
         }
 
-        public virtual DbSet<ButtonLibrary> ButtonLibrary { get; set; }
-        public virtual DbSet<Code> Code { get; set; }
-        public virtual DbSet<CodeType> CodeType { get; set; }
-        public virtual DbSet<LoginLog> LoginLog { get; set; }
-        public virtual DbSet<Menu> Menu { get; set; }
-        public virtual DbSet<MenuButton> MenuButton { get; set; }
-        public virtual DbSet<Organization> Organization { get; set; }
-        public virtual DbSet<OrgRole> OrgRole { get; set; }
-        public virtual DbSet<OrgUser> OrgUser { get; set; }
-        public virtual DbSet<Role> Role { get; set; }
-        public virtual DbSet<RoleAuth> RoleAuth { get; set; }
-        public virtual DbSet<RoleMenu> RoleMenu { get; set; }
-        public virtual DbSet<RoleMenuButton> RoleMenuButton { get; set; }
-        public virtual DbSet<RoleSetAuth> RoleSetAuth { get; set; }
-        public virtual DbSet<SetAuthCode> SetAuthCode { get; set; }
-        public virtual DbSet<SystemLog> SystemLog { get; set; }
-        public virtual DbSet<SystemParameter> SystemParameter { get; set; }
-        public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<UserRole> UserRole { get; set; }
-        public virtual DbSet<UserSet> UserSet { get; set; }
+        public  DbSet<ButtonLibrary> ButtonLibrarys { get; set; }
+        public  DbSet<Code> Codes { get; set; }
+        public  DbSet<CodeType> CodeTypes { get; set; }
+        public  DbSet<LoginLog> LoginLogs { get; set; }
+        public  DbSet<Menu> Menus { get; set; }
+        public  DbSet<MenuButton> MenuButtons { get; set; }
+        public  DbSet<Organization> Organizations { get; set; }
+        public  DbSet<OrgRole> OrgRoles { get; set; }
+        public  DbSet<OrgUser> OrgUsers { get; set; }
+        public  DbSet<Role> Roles { get; set; }
+        public  DbSet<RoleAuth> RoleAuths { get; set; }
+        public  DbSet<RoleMenu> RoleMenus { get; set; }
+        public  DbSet<RoleMenuButton> RoleMenuButtons { get; set; }
+        public  DbSet<RoleSetAuth> RoleSetAuths { get; set; }
+        public  DbSet<SetAuthCode> SetAuthCodes { get; set; }
+        public  DbSet<SystemLog> SystemLogs { get; set; }
+        public  DbSet<SystemParameter> SystemParameters { get; set; }
+        public  DbSet<User> Users { get; set; }
+        public  DbSet<UserRole> UserRoles { get; set; }
+        public  DbSet<UserSet> UserSets { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {           
@@ -49,8 +49,6 @@ namespace DLiteAuthFrame.Base.Model
                 modelBuilder.Configurations.Add(configurationInstance);
             }
             base.OnModelCreating(modelBuilder);
-
-            Database.SetInitializer<DLAuthContext>(new DBInit());
         }
     }
 }

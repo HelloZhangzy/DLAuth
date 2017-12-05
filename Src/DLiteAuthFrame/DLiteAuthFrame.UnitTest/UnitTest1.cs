@@ -2,9 +2,14 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DLiteAuthFrame.Base.Model;
 using DLiteAuthFrame.Base;
-using DLiteAuthFrame.Base.AutoFac;
 using DLiteAuthFrame.Domain.IRepository;
 using DLiteAuthFrame.Domain.Model;
+using System.Data.Entity;
+using DLiteAuthFrame.Web;
+using DLiteAuthFrame.Web.Controllers;
+using System.Web.Mvc;
+using DLiteAuthFrame.Base.AutoFac;
+
 
 namespace DLiteAuthFrame.UnitTest
 {
@@ -15,16 +20,19 @@ namespace DLiteAuthFrame.UnitTest
         public void TestMethod1()
         {
             try
-            { 
-                DLAuthContext dldb = new DLAuthContext();
-                dldb.Database.CreateIfNotExists();
-
-                Assert.IsNotNull(dldb);
+            {
+               // Database.SetInitializer(new DBInit());
+               DLAuthContext db = new DLAuthContext();
+               db.Roles.CountAsync();
+               // db.Roles.CountAsync();
+               // from a in db.Roles where 
+               // dldb.Database.CreateIfNotExists();
+               Assert.IsNotNull(db);
             }
             catch(Exception ex)
             {
                 Assert.AreEqual(true, false, ex.Message);
-            } 
+            }
         }
 
         [TestMethod]
@@ -32,9 +40,12 @@ namespace DLiteAuthFrame.UnitTest
         {
             try
             {
-                AutofacExt.InitAutofac();
+                
+                AutofacConfig.InitAutofac();
 
-                IUnitOfWork work = AutofacExt.Resolve<IUnitOfWork>();
+               // AutofacExt.InitAutofac();
+
+                IUnitOfWork work = AutofacConfig.Resolve<IUnitOfWork>();
 
                 var re = work.GetRepository<User>();
                 User us = new User();
@@ -64,9 +75,9 @@ namespace DLiteAuthFrame.UnitTest
         {
             try
             {
-                AutofacExt.InitAutofac();
+                //AutofacExt.InitAutofac();
 
-                IUnitOfWork work = AutofacExt.Resolve<IUnitOfWork>();
+                IUnitOfWork work = AutofacConfig.Resolve<IUnitOfWork>();
 
                 var re = work.GetRepository<User>();
 
@@ -79,6 +90,14 @@ namespace DLiteAuthFrame.UnitTest
             {
                 Assert.AreEqual(true, false, ex.Message);
             }
+        }
+
+        [TestMethod]
+        public void TestMethod4()
+        {
+            AutofacConfig.InitAutofac();
+            var lc= AutofacConfig.Resolve<LoginController>();
+            lc.Index("admin", "admin");
         }
     }
 }

@@ -8,5 +8,6 @@ namespace DLiteAuthFrame.APP.IApp
 {
     public interface IAuthApp
     {
+        bool Login(string Name, string Pass);
     }
 }

@@ -45,5 +45,11 @@
     <Compile Include="IApp\IAuthApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DLiteAuthFrame.Domain\DLiteAuthFrame.Domain.csproj">
+      <Project>{bcad078c-9e25-47c4-b1b8-80f1399972f0}</Project>
+      <Name>DLiteAuthFrame.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

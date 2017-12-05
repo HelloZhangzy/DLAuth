@@ -109,6 +109,10 @@
     <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DLiteAuthFrame.APP\DLiteAuthFrame.APP.csproj">
+      <Project>{1b052e1c-67bc-47aa-ae2d-4a6bb88ceed1}</Project>
+      <Name>DLiteAuthFrame.APP</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DLiteAuthFrame.Comm\DLiteAuthFrame.Common.csproj">
       <Project>{4ba15583-9dd3-4917-be0b-61b05ca26e91}</Project>
       <Name>DLiteAuthFrame.Common</Name>
