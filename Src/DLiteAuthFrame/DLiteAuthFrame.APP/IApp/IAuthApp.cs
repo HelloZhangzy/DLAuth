@@ -8,6 +8,5 @@ namespace DLiteAuthFrame.APP.IApp
 {
     public interface IAuthApp
     {
-                
     }
 }
