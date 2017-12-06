@@ -1,5 +1,7 @@
 ﻿
-@model DLiteAuthFrame.Web.Models.LoginViewModel
+@*@model DLiteAuthFrame.Web.Models.LoginViewModel*@
+
+@model DLiteAuthFrame.Web.Controllers.User
 
 @{
     Layout = null;
@@ -38,14 +40,11 @@
         });
     </script>*@
 
-    <script type="text/javascript">
-
+    @*<script type="text/javascript">
         function OnSuccess(responseData) {
-            alert("AAA");
-            
+            alert("AAA");            
            // $("#result").html = responseData;
         }
-
         function OnComplete(responseData) {
             alert("BBB");
             //$("#result").html = responseData;
@@ -54,9 +53,14 @@
             alert("CCC");
            // $("#result").html = responseData;
         }
+    </script>*@   
+
+    <script type="text/javascript">
+         function Submit() {
+             $("#frmRegist").submit();
+         }
     </script>
 
-    
 </head>
 <body class="templatemo-bg-gray">
     @*<div class="container center-vertical">
@@ -82,14 +86,47 @@
     </div>*@    
 
     
-   @using (Ajax.BeginForm("CheckLogin", "Login", null, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "result"
+   @*@using (Ajax.BeginForm("CheckLogin", "Login", null, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "result"
        , OnSuccess = "OnSuccess",OnComplete= "OnComplete", OnFailure= "OnFailure" }))
    {
         <p>NAME:@Html.TextBoxFor(x => x.LoginCode)</p>
         <p>EMAIL:@Html.TextBoxFor(x => x.PassWord)</p>      
         <p><input type="submit" id="btnSubmit" value="submit" /></p>
     }
-    <div id="result"/>
+    <div id="result"/>*@     
+    <div>
+        <form id="frmRegist" action="/Login/Index" method="post">
+            <table border="2">
+                <tr>
+                    <th colspan="2">User Regist</th>
+                </tr>
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="text" id="txtUsername" name="Username" /></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" id="txtPassword" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="button" id="btnSubmit" value="Regist" onclick="Submit()" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>  
+
+    @using (Html.BeginForm("Index2", "Login", FormMethod.Post))
+    {
+        <p>name:@Html.TextBoxFor(x => x.Name)</p>
+        <p>email:@Html.TextBoxFor(x => x.Email)</p>
+        <p>phone:@Html.TextBoxFor(x => x.Phone)</p>
+        <p>
+            gender:@Html.DropDownListFor(x => x.Gender, new[]{
+             new SelectListItem{ Text = "boy", Value = "male", Selected = true},
+             new SelectListItem{ Text = "girl", Value = "female", Selected = false }}, "--please select gender--")
+        </p>
+            <p><input type="submit" id="btnSubmit" value="submit" /></p>
+    }  
 </body>
 </html>
 

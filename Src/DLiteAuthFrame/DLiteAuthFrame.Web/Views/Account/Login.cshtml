@@ -1,0 +1,74 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登 录 </title>
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css">          
+    @*<link href="~/Content/Login.css" rel="stylesheet" type="text/css" />*@
+    <link href="~/Content/layui/css/layui.css" rel="stylesheet" />  
+    <script src="~/Content/layui/layui.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnLogin").click(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Account/Login',
+                    data: { Name: $('#txtName').val(), PassWord: $('#txtPassWord').val() },
+                    dataType: 'JSON',
+                    success: function (res) {
+                        if (res.state == "success") {
+                            //一般直接写在一个js文件中
+                            layui.use(['layer', 'form'], function () {
+                                var layer = layui.layer
+                                    , form = layui.form;
+                                layer.msg(res.message);
+                            });
+                            setTimeout(function () { window.location.href = res.Url; }, 2000);
+                        } else {
+                            layui.use(['layer', 'form'], function () {
+                                var layer = layui.layer
+                                    , form = layui.form;
+                                layer.msg(res.message);                               
+                            });
+                        }
+                    }
+                });
+            });            
+        });
+    </script>
+
+</head>
+<body>
+    <div>
+        <div>
+            <div>               
+                    <span class="heading">用户登录</span>
+                <div class="form-group">
+                    <div class="input-group">
+                        <i class="input-group-addon glyphicon glyphicon-user"></i>
+                        <input type="text" maxlength="50" class="form-control layui-input" runat="server" required lay-verify="required" placeholder="请输入账号" id="txtName">
+                        
+                    </div>
+                </div>
+                    <div class="form-group layui-input-inline">
+                        <input type="password" maxlength="50" class="form-control layui-input" runat="server" required lay-verify="required" placeholder="请输入密码" id="txtPassWord">
+                        <i class="glyphicon glyphicon-lock"></i>
+                    </div>
+                    <div>
+                        <button type="submit" class="layui-btn layui-btn-radius" id="btnLogin">立刻登录</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+</body>
+</html>
