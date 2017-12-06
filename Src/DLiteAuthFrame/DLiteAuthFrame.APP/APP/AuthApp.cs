@@ -19,7 +19,8 @@ namespace DLiteAuthFrame.APP.APP
 
         public bool Login(string Name, string Pass)
         {
-            return User.CheckPassWord(Name, Pass);
+            return false;
+            //return User.CheckPassWord(Name, Pass);
         }
 
     }

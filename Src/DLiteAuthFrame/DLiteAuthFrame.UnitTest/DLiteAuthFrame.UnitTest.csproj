@@ -55,6 +55,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.WebPages">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="UnitTest1.cs" />
@@ -68,6 +71,10 @@
     <ProjectReference Include="..\DLiteAuthFrame.Base\DLiteAuthFrame.Base.csproj">
       <Project>{6bd657e2-2946-4d39-a2ae-c8884829ffa1}</Project>
       <Name>DLiteAuthFrame.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DLiteAuthFrame.Comm\DLiteAuthFrame.Common.csproj">
+      <Project>{4BA15583-9DD3-4917-BE0B-61B05CA26E91}</Project>
+      <Name>DLiteAuthFrame.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\DLiteAuthFrame.Domain\DLiteAuthFrame.Domain.csproj">
       <Project>{bcad078c-9e25-47c4-b1b8-80f1399972f0}</Project>

@@ -18,6 +18,10 @@ namespace DLiteAuthFrame.Common
         /// </summary>
         public string message { get; set; }
         /// <summary>
+        /// 跳转地址
+        /// </summary>
+        public string Url { get; set; }
+        /// <summary>
         /// 获取 返回数据
         /// </summary>
         public object data { get; set; }

@@ -2,6 +2,7 @@
 using DLiteAuthFrame.APP.IApp;
 using DLiteAuthFrame.Common;
 using DLiteAuthFrame.Domain.IServices.IAuthservices;
+using DLiteAuthFrame.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,11 +26,15 @@ namespace DLiteAuthFrame.Web.Controllers
             return View();
         }
 
-        [HttpPost]        
-        public ActionResult Login(string Name, string PassWord)
+        [HttpPost]      
+        public string CheckLogin(LoginViewModel user)
         {
-            if(!Auth.Login(Name,PassWord))  return Content(new AjaxResult { state = ResultType.error.ToString(), message = "账号或密码错误。" }.ToJson());           
-            return Content(new AjaxResult { state = ResultType.success.ToString(), message = "账号或密码错误。" }.ToJson());
+            //Response.Write("<Script Language=JavaScript>alert('密码或用户名错误，请重试！');</Script>");
+
+            if (Auth.Login(user.LoginCode, user.PassWord))
+                return (new AjaxResult { state = ResultType.success.ToString(), message = "登录成功。" }.ToJson());
+            else
+                return (new AjaxResult { state = ResultType.error.ToString(), message = "账号或密码错误！" }.ToJson());
 
         }
     }

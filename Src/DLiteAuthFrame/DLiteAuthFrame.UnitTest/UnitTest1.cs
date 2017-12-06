@@ -9,7 +9,7 @@ using DLiteAuthFrame.Web;
 using DLiteAuthFrame.Web.Controllers;
 using System.Web.Mvc;
 using DLiteAuthFrame.Base.AutoFac;
-
+using DLiteAuthFrame.Common;
 
 namespace DLiteAuthFrame.UnitTest
 {
@@ -97,7 +97,8 @@ namespace DLiteAuthFrame.UnitTest
         {
             AutofacConfig.InitAutofac();
             var lc= AutofacConfig.Resolve<LoginController>();
-            lc.Index("admin", "admin");
+            //var a= lc.Login("admin", "admin");
+            Assert.AreEqual(true, false, a.ToString());
         }
     }
 }

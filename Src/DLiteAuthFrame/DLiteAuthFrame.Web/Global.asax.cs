@@ -26,7 +26,7 @@ namespace DLiteAuthFrame.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             
             AutofacConfig.InitAutofac();
-           // AutofacExt.Resolve<DbContext>();
+            AutofacConfig.Resolve<DbContext>();
             //  Database.SetInitializer(new DBInit() );
         }
     }
