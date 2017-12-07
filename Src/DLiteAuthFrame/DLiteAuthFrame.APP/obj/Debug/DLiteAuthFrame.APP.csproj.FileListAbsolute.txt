@@ -13,3 +13,15 @@ D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\obj\Debug\DLiteAuth
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\obj\Debug\DLiteAuthFrame.APP.csproj.CoreCompileInputs.cache
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\obj\Debug\DLiteAuthFrame.APP.dll
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\obj\Debug\DLiteAuthFrame.APP.pdb
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\DLiteAuthFrame.Comm.dll
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\System.Web.Mvc.dll
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\log4net.dll
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\NPOI.dll
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\DLiteAuthFrame.Comm.pdb
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\System.Web.Mvc.xml
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\log4net.xml
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\NPOI.xml
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\zh-Hans\System.Web.Mvc.resources.dll

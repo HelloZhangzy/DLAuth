@@ -204,7 +204,6 @@ D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\System.Web.WebP
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\System.Web.WebPages.Razor.dll
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\WebGrease.dll
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\EntityFramework.Extended.dll
-D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\log4net.dll
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\NPOI.dll
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\ICSharpCode.SharpZipLib.dll
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\DLiteAuthFrame.APP.pdb

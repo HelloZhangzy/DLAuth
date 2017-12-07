@@ -26,17 +26,12 @@ namespace DLiteAuthFrame.Web.Controllers
 
         [HttpPost]
         public ActionResult Login(string Name, string PassWord)
-        {
+        {            
             if (Auth.Login(Name, PassWord))
                 return Content(new AjaxResult { state = ResultType.success.ToString(),Url="/Home/Index", message = "登录成功。" }.ToJson());
             else
                 return Content(new AjaxResult { state = ResultType.error.ToString(), message = "账号或密码错误！" }.ToJson());
             //return View();
-        }
-        [HttpPost]
-        public ActionResult Login2()
-        {
-            return Content(new AjaxResult { state = ResultType.error.ToString(), message = "账号或密码错误！" }.ToJson());
-        }
+        }        
     }
 }

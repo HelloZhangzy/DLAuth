@@ -15,7 +15,7 @@ namespace DLiteAuthFrame.Common
     /// </summary>
     public class DESEncrypt
     {
-        private static string DESKey = "nfine_desencrypt_2016";
+        private static string DESKey = "DLiteFrameKey_a1d3fadf54dfwe4r6@!!11";
 
         #region ========加密========
         /// <summary>

@@ -5,6 +5,7 @@ namespace DLiteAuthFrame.Common
     public class Log
     {
         private ILog logger;
+
         public Log(ILog log)
         {
             this.logger = log;

@@ -19,7 +19,7 @@ namespace DLiteAuthFrame.Base.Repository
         //protected DbContext Context;
         protected DbContext Context = null;
         //是否独享
-        private bool isExclusive = false;
+        public bool isExclusive { get; set; }
 
         //public Repository()
         //{
@@ -29,7 +29,8 @@ namespace DLiteAuthFrame.Base.Repository
 
         public Repository(DbContext context)
         {
-            this.Context = context;           
+            this.Context = context;
+            isExclusive = true;
         }
 
         protected DbSet<T> DbSet

@@ -39,9 +39,16 @@ namespace DLiteAuthFrame.Domain.Services.AuthServices
 
         public bool CheckPassWord(string Name, string PassWord)
         {
-            var count=_user.Filter(t => t.LoginCode == Name.Trim() && t.LoginPass == PassWord && t.ibState==true).Count();
-            if (count > 0) return true;
-            else  return false;
+            var Luser=_user.Filter(t => t.LoginCode == Name.Trim() && t.LoginPass == PassWord && t.ibState==true).FirstOrDefault();
+
+            if (Luser != null)
+            {
+                Luser.LastLoginDate = DateTime.Now;
+                Luser.LoginCount++;
+                _user.Update(Luser);
+                return true;
+            }
+            else return false;
         }
 
         public IQueryable<Organization> GetOrg(Guid UserID)

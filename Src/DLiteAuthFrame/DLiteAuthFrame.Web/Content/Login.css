@@ -132,7 +132,7 @@
         float: right;
         font-size: 14px;
         color: #fff;
-        /*background: #00b4ef;*/
+        background: #00b4ef;
         background:lightseagreen;
         border-radius: 30px;
         padding: 10px 25px;
@@ -150,7 +150,4 @@
             left: 45px;
         }
 
-    .form-horizontal .btn {
-        padding: 10px 20px;
-    }
 }    
