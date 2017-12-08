@@ -9,7 +9,6 @@ using DLiteAuthFrame.Base.Repository;
 using DLiteAuthFrame.Domain.IRepository;
 using DLiteAuthFrame.Domain.IServices.IAuthservices;
 using DLiteAuthFrame.Domain.Services.AuthServices;
-using DLiteAuthFrame.Web.Models;
 using log4net;
 using System;
 using System.Collections.Generic;

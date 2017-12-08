@@ -9,7 +9,7 @@ namespace DLiteAuthFrame.Base.Model.Mapping
     {
         public OrgRoleMap()
         {
-            ToTable("OrgRoleMap");
+            ToTable("OrgRole");
 
             HasKey(t => t.ID);
 

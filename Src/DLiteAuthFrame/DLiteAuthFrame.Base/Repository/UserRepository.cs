@@ -17,6 +17,11 @@ namespace DLiteAuthFrame.Base.Repository
 
         }
 
+        public IQueryable<Menu> GetMenu(Guid id)
+        {
+            return Context.Set<Menu>();
+        }
+
         public IQueryable<Organization> GetOrg(Guid id)
         {
             return from a in Context.Set<OrgUser>()

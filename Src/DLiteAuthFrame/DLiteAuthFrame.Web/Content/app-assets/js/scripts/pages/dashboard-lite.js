@@ -60,13 +60,14 @@
     /****************************************************
     *               Employee Satisfaction               *
     ****************************************************/
-    //Get the context of the Chart canvas element we want to select
-    var ctx1 = document.getElementById("emp-satisfaction").getContext("2d");
+    ////Get the context of the Chart canvas element we want to select
+    //var ctx1 = document.getElementById("emp-satisfaction").getContext("2d");
 
-    // Create Linear Gradient
-    var white_gradient = ctx1.createLinearGradient(0, 0, 0,400);
-    white_gradient.addColorStop(0, 'rgba(255,255,255,0.5)');
-    white_gradient.addColorStop(1, 'rgba(255,255,255,0)');
+    //// Create Linear Gradient
+    //var white_gradient = ctx1.createLinearGradient(0, 0, 0, 400);
+
+    //white_gradient.addColorStop(0, 'rgba(255,255,255,0.5)');
+    //white_gradient.addColorStop(1, 'rgba(255,255,255,0)');
 
     // Chart Options
     var empSatOptions = {
@@ -108,7 +109,7 @@
         datasets: [{
             label: "Employees",
             data: [28, 35, 36, 48, 46, 42, 60],
-            backgroundColor: white_gradient,
+            //backgroundColor: white_gradient,
             borderColor: "rgba(255,255,255,1)",
             borderWidth: 2,
             strokeColor : "#ff6c23",
@@ -132,7 +133,7 @@
     };
 
     // Create the chart
-    var areaChart = new Chart(ctx1, empSatconfig);
+   // var areaChart = new Chart(ctx1, empSatconfig);
 
     // Chart Data
     var userPageVisitData = {
@@ -172,7 +173,7 @@
     };
 
     // Create the chart
-    var stackedAreaChart = new Chart(ctx2, userPageVisitConfig);
+    //var stackedAreaChart = new Chart(ctx2, userPageVisitConfig);
 
     // Live chart update random data for the new entry
     setInterval(function() {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DLiteAuthFrame.APP.ViewModel;
+using DLiteAuthFrame.Domain.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +15,10 @@ namespace DLiteAuthFrame.APP.IApp
         string GetCurrLoginCode();
 
         bool CheckAuth();
+
+        MenuViewModel GetMenu();
+
+        User GetUserInfo();
     }
 
 }

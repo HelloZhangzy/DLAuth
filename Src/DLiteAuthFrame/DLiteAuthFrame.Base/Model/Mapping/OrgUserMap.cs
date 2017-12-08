@@ -13,11 +13,11 @@ namespace DLiteAuthFrame.Base.Model.Mapping
         public OrgUserMap()
         {          
             // table
-            ToTable("OrgUserMap", "dbo");
+            ToTable("OrgUser", "dbo");
             // keys
             HasKey(t => t.ID);
-            // Property          
-
+            // Property
+            
             //Relationships
             this.HasRequired(t => t.Organization)
                .WithMany(t => t.OrgUser)

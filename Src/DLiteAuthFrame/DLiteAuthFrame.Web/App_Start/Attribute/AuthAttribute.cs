@@ -15,7 +15,7 @@ namespace DLiteAuthFrame.Web.App_Start.Attribute
     /// </summary>
     public class AuthAttribute: ActionFilterAttribute
     {
-        public IAuthApp Auth { get; set; }   
+        public IAuthApp Auth { get; set; }
         
         public ILog log { get; set; }
 

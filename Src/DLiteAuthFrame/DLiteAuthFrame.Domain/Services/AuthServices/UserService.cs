@@ -29,15 +29,15 @@ namespace DLiteAuthFrame.Domain.Services.AuthServices
         public void Delete(User user)
         {
             user.ibState = false;
-            _user.Update(user);            
+            _user.Update(user);
         }
 
         public IQueryable<Menu> GetMenu(Guid UserID)
         {
-            throw new NotImplementedException();
+            return _user.GetMenu(UserID);
         }
 
-        public bool CheckPassWord(string Name, string PassWord)
+        public string CheckPassWord(string Name, string PassWord)
         {
             var Luser=_user.Filter(t => t.LoginCode == Name.Trim() && t.LoginPass == PassWord && t.ibState==true).FirstOrDefault();
 
@@ -46,9 +46,9 @@ namespace DLiteAuthFrame.Domain.Services.AuthServices
                 Luser.LastLoginDate = DateTime.Now;
                 Luser.LoginCount++;
                 _user.Update(Luser);
-                return true;
+                return Luser.UserCode.ToString();
             }
-            else return false;
+            else return "";
         }
 
         public IQueryable<Organization> GetOrg(Guid UserID)
@@ -63,7 +63,7 @@ namespace DLiteAuthFrame.Domain.Services.AuthServices
 
         public User GetUser(Guid ID)
         {
-            return _user.Filter(t => t.UserCode == ID).FirstOrDefault();            
+            return _user.Filter(t => t.UserCode == ID).FirstOrDefault();
         }
 
         public IQueryable<User> GetUsers(Expression<Func<User, bool>> filter, out int total, int index = 0, int size = 50)
