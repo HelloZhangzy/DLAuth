@@ -91,7 +91,6 @@ D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\System.Web.
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\System.Web.WebPages.Razor.dll
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\WebGrease.dll
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\EntityFramework.Extended.dll
-D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\log4net.dll
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\NPOI.dll
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\ICSharpCode.SharpZipLib.dll
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\DLiteAuthFrame.APP.pdb
