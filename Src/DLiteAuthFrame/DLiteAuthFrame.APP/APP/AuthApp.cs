@@ -1,5 +1,6 @@
 ﻿using DLiteAuthFrame.APP.IApp;
 using DLiteAuthFrame.APP.ViewModel;
+using DLiteAuthFrame.Base.Cookis_Session;
 using DLiteAuthFrame.Common;
 using DLiteAuthFrame.Domain.IServices.IAuthservices;
 using DLiteAuthFrame.Domain.Model;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -17,12 +19,7 @@ namespace DLiteAuthFrame.APP.APP
 {
     public class AuthApp : IAuthApp
     {
-        const string CookiesName = "DLiteAuthFrame_Cookies";
-
         private  IUserService User { get; set; }
-
-        private HttpCookie cookie = HttpContext.Current.Request.Cookies[CookiesName];
-        private HttpSessionState session= HttpContext.Current.Session;
 
         public AuthApp(IUserService _user)
         {
@@ -34,43 +31,28 @@ namespace DLiteAuthFrame.APP.APP
             string ID = User.CheckPassWord(Name, Pass);
             if (!string.IsNullOrWhiteSpace(ID))
             {
-                GetNewToken(ID);
+                DLSession.GetNewToken(ID);
                 return true;
             }
             else return false;
-        }
-            
-        public string GetCurrLoginCode()
-        {
-            string Token = GetToken();
-
-            if (string.IsNullOrWhiteSpace(Token)) return "";
-            
-            var session = HttpContext.Current.Session[Token];
-            if (session != null)
-            {
-                return session.ToString();
-            }
-            else
-                return "";
-        }
+        }        
         
         public bool CheckAuth()
         {
-            string LoginCode = GetCurrLoginCode();
+            string LoginCode = DLSession.GetCurrLoginCode();            
             return true;
         }
 
         public User GetUserInfo()
         {
-            string ID = GetCurrLoginCode();
+            string ID = DLSession.GetCurrLoginCode();
             if (string.IsNullOrWhiteSpace(ID)) return null;
             return User.GetUser(Guid.Parse(ID));
         }
 
         public MenuViewModel GetMenu()
         {
-            string ID = GetCurrLoginCode();
+            string ID = DLSession.GetCurrLoginCode();
             if (string.IsNullOrWhiteSpace(ID)) return null;
             List<Menu> menu=User.GetMenu(Guid.Parse(ID)).ToList();
             MenuViewModel mvm = new MenuViewModel();
@@ -103,35 +85,30 @@ namespace DLiteAuthFrame.APP.APP
 
         }
 
-        private void GetNewToken(string LoginCode)
+        public List<TreeViewModel> GetOrg()
         {
-            string ToKen = "";
-            if (cookie == null)
+            string ID = DLSession.GetCurrLoginCode();
+            if (string.IsNullOrWhiteSpace(ID)) return null;
+            var orgs=User.GetOrg(Guid.Parse(ID));
+            List<TreeViewModel> trs = new List<TreeViewModel>();
+            RecursionOrg(Guid.Empty,orgs.ToList(),trs);
+            return trs;
+        }
+
+        private void RecursionOrg(Guid ParentID, List<Organization> orgs, List<TreeViewModel> tvs)
+        {
+            foreach (var item in orgs.Where(t => t.ParentCode == ParentID))
             {
-                cookie = new HttpCookie(CookiesName);
-                ToKen = Guid.NewGuid().ToString();
-            }
-            else
-            {
-                ToKen = GetToken();
-                if (ToKen != "")
+                TreeViewModel tv = new TreeViewModel();
+                tv.ID = item.OrgCode;
+                tv.Name = item.OrgName;
+                tv.ParentId = item.ParentCode;                
+                if (orgs.Where(t => t.ParentCode == item.OrgCode).Count() > 0)
                 {
-                    session.Remove(ToKen);
+                    RecursionOrg(item.OrgCode,orgs,tv.Node);
                 }
+                tvs.Add(tv);
             }
-            cookie.Value = DESEncrypt.Encrypt(ToKen);
-            cookie.Expires = DateTime.Now.AddMinutes(20);
-
-            HttpContext.Current.Response.Cookies.Add(cookie);
-            session.Add(ToKen, LoginCode);
         }
-
-        private string GetToken()
-        {          
-            if (cookie == null) return "";
-            return DESEncrypt.Decrypt(cookie.Value);
-        }
-
-
     }
 }

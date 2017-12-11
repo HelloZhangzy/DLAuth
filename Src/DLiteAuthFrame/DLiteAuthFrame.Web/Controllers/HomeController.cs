@@ -23,5 +23,10 @@ namespace DLiteAuthFrame.Web.Controllers
             ViewData["MenuViewModel"] = auth.GetMenu();
             return View();
         }
+
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }

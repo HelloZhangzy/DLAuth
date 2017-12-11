@@ -8,10 +8,16 @@ namespace DLiteAuthFrame.Web.Areas.SystemManage.Controllers
 {
     public class UserManageController : Controller
     {
+
         // GET: SystemManage/UserManage
         public ActionResult Index()
         {
             return View();
+        }
+
+        public  GetOrg()
+        {
+
         }
     }
 }
