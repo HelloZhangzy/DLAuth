@@ -33,6 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc">
       <HintPath>..\DLiteAuthFrame.Comm\bin\Debug\System.Web.Mvc.dll</HintPath>
@@ -49,8 +50,14 @@
     <Compile Include="Class1.cs" />
     <Compile Include="IApp\IAuthApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\MenuViewModel.cs" />
+    <Compile Include="ViewModel\TreeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DLiteAuthFrame.Base\DLiteAuthFrame.Base.csproj">
+      <Project>{6bd657e2-2946-4d39-a2ae-c8884829ffa1}</Project>
+      <Name>DLiteAuthFrame.Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DLiteAuthFrame.Comm\DLiteAuthFrame.Common.csproj">
       <Project>{4BA15583-9DD3-4917-BE0B-61B05CA26E91}</Project>
       <Name>DLiteAuthFrame.Common</Name>

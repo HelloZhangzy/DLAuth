@@ -55,6 +55,7 @@
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
@@ -82,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoFac\AutoFacEx.cs" />
+    <Compile Include="Cookis_Session\DLSession.cs" />
     <Compile Include="Model\DBInit.cs" />
     <Compile Include="Model\DLAuthContext.cs" />
     <Compile Include="Model\Mapping\ButtonLibraryMap.cs" />
@@ -109,10 +111,6 @@
     <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DLiteAuthFrame.APP\DLiteAuthFrame.APP.csproj">
-      <Project>{1b052e1c-67bc-47aa-ae2d-4a6bb88ceed1}</Project>
-      <Name>DLiteAuthFrame.APP</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DLiteAuthFrame.Comm\DLiteAuthFrame.Common.csproj">
       <Project>{4ba15583-9dd3-4917-be0b-61b05ca26e91}</Project>
       <Name>DLiteAuthFrame.Common</Name>

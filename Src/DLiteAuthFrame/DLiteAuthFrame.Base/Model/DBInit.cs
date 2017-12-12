@@ -14,11 +14,11 @@ namespace DLiteAuthFrame.Base.Model
         private Guid UserID = Guid.Empty;
         private Guid OrgID = Guid.Empty;
         private Guid RoleID = Guid.Empty;
+        private DLAuthContext db=null;
 
         protected override void Seed(DLAuthContext context)
         {
-            
-
+            db = context;
             context.Users.AddRange(GetUser());
             context.Menus.AddRange(GetMenu());
             context.Roles.AddRange(GetRole());
@@ -140,7 +140,7 @@ namespace DLiteAuthFrame.Base.Model
 
         public List<Role> GetRole()
         {
-            RoleID = Guid.Empty;
+            RoleID = Guid.NewGuid();
             return new List<Role>()
             {
                 new Role(){
@@ -196,7 +196,6 @@ namespace DLiteAuthFrame.Base.Model
                       RoleCode=RoleID
                 }
             };
-        }            
-
+        }
     }
 }

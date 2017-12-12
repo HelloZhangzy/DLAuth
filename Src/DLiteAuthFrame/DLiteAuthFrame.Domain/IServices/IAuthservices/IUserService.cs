@@ -19,7 +19,7 @@ namespace DLiteAuthFrame.Domain.IServices.IAuthservices
 
         User GetUser(Guid ID);
 
-        bool CheckPassWord(string Name,string PassWord);
+        string CheckPassWord(string Name,string PassWord);
 
         IQueryable<User> GetUsers(Expression<Func<User, bool>> filter, out int total, int index = 0, int size = 50);
 

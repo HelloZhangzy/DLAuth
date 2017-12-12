@@ -21,5 +21,13 @@ namespace DLiteAuthFrame.Domain.IRepository
         /// </summary>
         /// <returns></returns>
         IQueryable<Role> GetRole(Guid id);
+
+        /// <summary>
+        /// 获取用户菜单权限
+        /// </summary>
+        /// <returns></returns>
+        IQueryable<Menu> GetMenu(Guid id);
+
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DLiteAuthFrame.APP.APP;
 using DLiteAuthFrame.APP.IApp;
+using DLiteAuthFrame.Base.Cookis_Session;
 using log4net;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace DLiteAuthFrame.Web.App_Start.Attribute
     /// </summary>
     public class AuthAttribute: ActionFilterAttribute
     {
-        public IAuthApp Auth { get; set; }   
+        public IAuthApp Auth { get; set; }
         
         public ILog log { get; set; }
 
@@ -44,7 +45,7 @@ namespace DLiteAuthFrame.Web.App_Start.Attribute
         /// <returns></returns>
         private bool CheckLogin()
         {
-            if (string.IsNullOrWhiteSpace(Auth.GetCurrLoginCode())) return false;
+            if (string.IsNullOrWhiteSpace(DLSession.GetCurrLoginCode())) return false;
             return true;
             
         }
