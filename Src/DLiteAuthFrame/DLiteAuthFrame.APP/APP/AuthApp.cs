@@ -84,31 +84,7 @@ namespace DLiteAuthFrame.APP.APP
             }
 
         }
-
-        public List<TreeViewModel> GetOrg()
-        {
-            string ID = DLSession.GetCurrLoginCode();
-            if (string.IsNullOrWhiteSpace(ID)) return null;
-            var orgs=User.GetOrg(Guid.Parse(ID));
-            List<TreeViewModel> trs = new List<TreeViewModel>();
-            RecursionOrg(Guid.Empty,orgs.ToList(),trs);
-            return trs;
-        }
-
-        private void RecursionOrg(Guid ParentID, List<Organization> orgs, List<TreeViewModel> tvs)
-        {
-            foreach (var item in orgs.Where(t => t.ParentCode == ParentID))
-            {
-                TreeViewModel tv = new TreeViewModel();
-                tv.ID = item.OrgCode;
-                tv.Name = item.OrgName;
-                tv.ParentId = item.ParentCode;                
-                if (orgs.Where(t => t.ParentCode == item.OrgCode).Count() > 0)
-                {
-                    RecursionOrg(item.OrgCode,orgs,tv.Node);
-                }
-                tvs.Add(tv);
-            }
-        }
+        
+       
     }
 }

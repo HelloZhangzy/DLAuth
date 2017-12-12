@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRepository\IOrgRository.cs" />
     <Compile Include="IRepository\IUserRository.cs" />
     <Compile Include="IRepository\IRepository.cs" />
     <Compile Include="IRepository\IUnitOfWork.cs" />

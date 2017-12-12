@@ -25,10 +25,11 @@ namespace DLiteAuthFrame.Domain.Model
 
         public Guid? UpdateUserCode { get; set; }
 
-        public DateTime? UpdateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }    
         
+       
         public virtual ICollection<OrgRole> OrgRole { get; set; }
-        
+       
         public virtual ICollection<OrgUser> OrgUser { get; set; }
     }
 }

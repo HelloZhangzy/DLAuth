@@ -17,8 +17,6 @@ namespace DLiteAuthFrame.APP.IApp
         MenuViewModel GetMenu();
 
         User GetUserInfo();
-
-        List<TreeViewModel> GetOrg();
     }
 
 }

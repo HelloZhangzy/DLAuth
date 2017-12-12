@@ -14,8 +14,9 @@ namespace DLiteAuthFrame.Common
         }
         public static string ToJson(this object obj)
         {
-            var timeConverter = new IsoDateTimeConverter { DateTimeFormat = "yyyy-MM-dd HH:mm:ss" };
-            return JsonConvert.SerializeObject(obj, timeConverter);
+            //var timeConverter = new IsoDateTimeConverter { DateTimeFormat = "yyyy-MM-dd HH:mm:ss" };
+            return JsonConvert.SerializeObject(obj);
+           // return JsonConvert.SerializeObject(obj, timeConverter);
         }
         public static string ToJson(this object obj, string datetimeformats)
         {

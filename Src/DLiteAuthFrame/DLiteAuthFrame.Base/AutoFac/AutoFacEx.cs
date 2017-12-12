@@ -1,21 +1,5 @@
 ﻿using Autofac;
 using Autofac.Core;
-using Autofac.Integration.Mvc;
-using DLiteAuthFrame.APP.APP;
-using DLiteAuthFrame.APP.IApp;
-using DLiteAuthFrame.Base.Model;
-using DLiteAuthFrame.Base.Repository;
-using DLiteAuthFrame.Domain.IRepository;
-using DLiteAuthFrame.Domain.IServices.IAuthservices;
-using DLiteAuthFrame.Domain.Services.AuthServices;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace DLiteAuthFrame.Base.AutoFac
 {
