@@ -29,13 +29,16 @@ namespace DLiteAuthFrame.Web.Areas.SystemManage.Controllers
 
         public ActionResult GetOrgs()
         {
+            List<OrgViewModel> data = GetOrgList();
+            return Content(data.ToJson());
+        }
+
+        private List<OrgViewModel> GetOrgList()
+        {
             var UserID = DLSession.GetCurrLoginCode();
-
             if (string.IsNullOrWhiteSpace(UserID)) return null;
-
             var data = org.GetOrgs(Guid.Parse(UserID));
-
-            return Content(ToViewModel(data).ToJson());
+            return ToViewModel(data);
         }
 
         [HttpPost]
@@ -55,8 +58,9 @@ namespace DLiteAuthFrame.Web.Areas.SystemManage.Controllers
                 ov.UpdateUserCode = item.UpdateUserCode;
                 return Content(ov.ToJson());
             }
-            return null;            
+            return null;
         }
+        
 
         private List<OrgViewModel> ToViewModel(IQueryable<Organization> orgs)
         {
@@ -79,8 +83,24 @@ namespace DLiteAuthFrame.Web.Areas.SystemManage.Controllers
         }
 
         [AuthAttribute]
-        public ActionResult Edit()
-        {           
+        public ActionResult Edit(string ID)
+        {
+            var item = org.Filter(t => t.OrgCode.ToString() == ID).FirstOrDefault();
+            if (item != null)
+            {
+                OrgViewModel ov = new OrgViewModel();
+                ov.CreaterDate = item.CreaterDate;
+                ov.CreateUserCode = item.CreateUserCode;
+                ov.OrgCode = item.OrgCode;
+                ov.OrgExplain = item.OrgExplain;
+                ov.OrgName = item.OrgName;
+                ov.ParentCode = item.ParentCode;
+                ov.UpdateDate = item.UpdateDate;
+                ov.UpdateUserCode = item.UpdateUserCode;
+                ViewData["OrgViewModel"] = ov;               
+            }
+            else ViewData["OrgViewModel"] = new OrgViewModel();
+            ViewData["OrgList"] = GetOrgList();
             return View();
         }
     }

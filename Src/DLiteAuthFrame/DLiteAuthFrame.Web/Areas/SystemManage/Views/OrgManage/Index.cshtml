@@ -5,7 +5,7 @@
 }
 <script>
     $(function () {
-        LoadOrgs();      
+        LoadOrgs();
     })
     
     function LoadOrgs() {
@@ -17,26 +17,28 @@
             url: "/SystemManage/OrgManage/GetOrgs",
             height: $(window).height() - 96,
             colModel: [
-                { label: "主键", name: "OrgCode", index: "", hidden: true, key: true },
-                { label: "上级编号", name: "ParentCode", index: "", hidden: true, key: true },
-                { label: '名称', name: 'OrgName', index: "", width: 200, align: 'left' },
-                { label: '创建时间', name: 'CreaterDate', index: "", width: 160, align: 'left' },
-                { label: '备注', name: 'OrgExplain', index: "", width: 200, align: 'left' },
+                { label: "主键", name: "OrgCode", index: "OrgCode", hidden: true, key: true },
+                { label: "上级编号", name: "ParentCode", index: "ParentCode", hidden: true, key: true },
+                { label: '名称', name: 'OrgName', index: "OrgName", width: 200, align: 'left' },
+                { label: '创建时间', name: 'CreaterDate', index: "CreaterDate", width: 160, align: 'left' },
+                { label: '备注', name: 'OrgExplain', index: "OrgExplain", width: 200, align: 'left' },
                 {
                     name: '功能',
                     width: 150,
                     formatter: function (value, grid, rows, state) {
-                        var rid = rows.id;
-                        return '<input id="Edit" type="button" class="btn btn-success btn-xs" name="Submit" value="编辑"  onclick="Edit(' + rid + ')"/>'
+                        var rid = rows.OrgCode;
+                        var ddd = "Edit('" + rid + "')";
+                        var ccc = "Delete('" + rid + "')";
+                        return '<input id="Edit" type="button" class="btn btn-success btn-xs" name="Submit" value="编辑"  onclick="' + ddd+'"/>'
                             + '&nbsp;&nbsp;'
-                            + '<input id="Delete" type="button" class="btn btn-danger btn-xs" value="删除" onclick="Delete(' + rid + ')"/>';
+                            + '<input id="Delete" type="button" class="btn btn-danger btn-xs" value="删除" onclick="' + ccc+'"/>';
                     }
                 }
             ]
         });
     };    
 
-    function Delete()
+    function Delete(id)
     {
         $.modalConfirm("注：您确定要【删除】该机构吗？", function (r) {
             if (r) {
@@ -46,14 +48,11 @@
     }
 
     function Edit(id)
-    {
-        alert(id);
-        var rowData = $('#OrgTree').jqGrid('getRowData', id);
+    {      
         $.modalOpen({
             id: 'Form',
             title: '修改机构',
-            data: { ID: rowData.ID },
-            url: '/SystemManage/OrgManage/Edit',
+            url: '/SystemManage/OrgManage/Edit?ID=' + id,
             width: '700px',
             height: '520px'
         });
