@@ -9,7 +9,7 @@ using System.Web.SessionState;
 
 namespace DLiteAuthFrame.Base.Cookis_Session
 {
-    public static class DLSession
+    public static class DLSession_Del
     {
         const string CookiesName = "DLiteAuthFrame_Cookies";
         //private static HttpCookie cookie = HttpContext.Current.Request.Cookies[CookiesName];

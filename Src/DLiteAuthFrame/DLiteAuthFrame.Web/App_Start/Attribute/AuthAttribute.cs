@@ -1,6 +1,6 @@
 ﻿using DLiteAuthFrame.APP.APP;
 using DLiteAuthFrame.APP.IApp;
-using DLiteAuthFrame.Base.Cookis_Session;
+using DLiteAuthFrame.Common;
 using log4net;
 using System;
 using System.Collections.Generic;

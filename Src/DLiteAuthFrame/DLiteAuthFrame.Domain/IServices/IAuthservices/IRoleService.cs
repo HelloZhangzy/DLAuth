@@ -8,5 +8,6 @@ namespace DLiteAuthFrame.Domain.IServices.IAuthservices
 {
     interface IRoleService
     {
+        
     }
 }

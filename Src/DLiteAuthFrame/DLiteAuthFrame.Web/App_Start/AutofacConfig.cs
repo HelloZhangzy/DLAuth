@@ -39,6 +39,7 @@ namespace DLiteAuthFrame.Web
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork));
             builder.RegisterType(typeof(UserService)).As(typeof(IUserService));
+
             builder.RegisterType(typeof(AuthApp)).As(typeof(IAuthApp));
             builder.RegisterType(typeof(UserRepository)).As(typeof(IUserRepository));
             builder.RegisterType(typeof(OrgRository)).As(typeof(IOrgRository));

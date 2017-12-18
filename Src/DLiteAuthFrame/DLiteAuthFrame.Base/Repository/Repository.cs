@@ -112,7 +112,7 @@ namespace DLiteAuthFrame.Base.Repository
                 DbSet.Remove(obj);
             if (isExclusive)
                 return Context.SaveChanges();
-            return 0;
+            return 1;
         }
 
         public virtual int Update(T TObject)

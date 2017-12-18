@@ -8,54 +8,49 @@
 
 
 <script>      
-    @*$(function () {
-        alert("aaa");
-        LoadData();
-    });
-
-    function LoadData()
-    {
-        alert("aaa");       
-        if (@ViewData["OrgViewModel"]) {
-            $("#OrgName").text = (ViewData["OrgViewModel"] as DLiteAuthFrame.APP.ViewModel.OrgViewModel).OrgName;
-        }       
-    }*@
-
-    $.ajax({
-        url: "/SystemManage/OrgManage/GetOrgs",
-        @*data: { ID: @OrgData.OrgCode},*@
-        dataType: "json",
-        async: false,
-        success: function (data) {
-            $("#form1").formSerialize(data);
+    function submitForm() {
+        if (!$('#form1').formValid()) {
+            return false;
         }
-    });
+
+        $.submitForm({
+            url: "/SystemManage/OrgManage/UpdateOrg",
+            param: $("#form1").formSerialize(),
+            success: function () {                
+                $.currentWindow().$("#OrgTree").trigger("reloadGrid");
+            }
+        })
+    }
 </script>
 <form id="form1">
     <div style="margin-top: 10px; margin-left: 10px; margin-right: 10px;">
         <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="#">基本信息</a></li>        
+            <li role="presentation" class="active"><a href="#">基本信息</a></li>
         </ul>
+
         <div style="padding-top: 20px; margin-right: 30px;">
-            <table class="form" style="width:1000px;">
+            <table class="form" style="width:500px;">
                 <tr>
                     <th class="formTitle">上级</th>
                     <td class="formValue">
-                        <select id="OrgCode" name="OrgCode" class="form-control required">
-                            <option value="0">父节点</option>
-                        </select>
-                    </td>                    
+                        @Html.DropDownList("OrgList", ViewData["OrgList"] as SelectList, new { @class = "form-control",@id="OrgCode",@name= "OrgCode" })
+                    </td>
                 </tr>
-                <tr>
+                <tr hidden="hidden">
+                    <td>
+                        <input id="OrgCde" name="OrgCde" hidden="hidden" class="form-control required" maxlength="100" placeholder="请输入" value="@OrgData.OrgCode" />
+                    </td>
+                </tr>
+                <tr>                   
                     <th class="formTitle">名称</th>
-                    <td class="formValue">                                            
-                        <input id="OrgName" name="OrgName" type="text" class="form-control required" maxlength="100" placeholder="请输入名称" value="@OrgData.OrgName" /> 
+                    <td class="formValue">                       
+                        <input id="OrgName" name="OrgName" type="text" class="form-control required" maxlength="100" placeholder="请输入" value="@OrgData.OrgName" />
                     </td>
                 </tr>
                 <tr>
                     <th class="formTitle" valign="top" style="padding-top: 5px;">备注</th>
-                    <td class="formValue" colspan="3">
-                        <input id="OrgExplain" name="OrgExplain" type="text" class="form-control" maxlength="100" placeholder="请输入名称" value="@OrgData.OrgExplain" /> 
+                    <td class="formValue">
+                        <input id="OrgExplain" name="OrgExplain" type="text" class="form-control" maxlength="100" placeholder="请输入" value="@OrgData.OrgExplain" />
                     </td>
                 </tr>
             </table>

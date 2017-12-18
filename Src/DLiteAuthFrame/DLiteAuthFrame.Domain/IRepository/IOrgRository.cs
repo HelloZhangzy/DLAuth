@@ -15,5 +15,13 @@ namespace DLiteAuthFrame.Domain.IRepository
         /// <param name="UserID"></param>
         /// <returns></returns>
         IQueryable<Organization> GetOrgs(Guid UserID);
+
+        ///// <summary>
+        ///// 删除指定ID
+        ///// </summary>
+        ///// <param name="ID"></param>
+        ///// <param name="Msg"></param>
+        ///// <returns></returns>
+        //bool DeleteOrg(Guid ID, ref string Msg);
     }
 }

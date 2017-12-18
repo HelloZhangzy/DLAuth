@@ -20,7 +20,7 @@
                 { label: "主键", name: "OrgCode", index: "OrgCode", hidden: true, key: true },
                 { label: "上级编号", name: "ParentCode", index: "ParentCode", hidden: true, key: true },
                 { label: '名称', name: 'OrgName', index: "OrgName", width: 200, align: 'left' },
-                { label: '创建时间', name: 'CreaterDate', index: "CreaterDate", width: 160, align: 'left' },
+                { label: '创建时间', name: 'CreaterDate', index: "CreaterDate", width: 160, align: 'left', formatter: "date", formatoptions: { srcformat: 'yyyy-MM-dd HH:mm:ss', newformat: 'yyyy-MM-dd HH:mm:ss' },
                 { label: '备注', name: 'OrgExplain', index: "OrgExplain", width: 200, align: 'left' },
                 {
                     name: '功能',
@@ -40,9 +40,23 @@
 
     function Delete(id)
     {
-        $.modalConfirm("注：您确定要【删除】该机构吗？", function (r) {
+        $.modalConfirm("注：您确定要【删除】该机构吗？", function (r) {           
             if (r) {
-
+                $.ajax({
+                    type: 'POST',
+                    url: '/SystemManage/OrgManage/DelOrg',
+                    data: { ID: id },
+                    dataType: 'JSON',
+                    success: function (res) {
+                        layui.layer.msg(res.state);
+                        if (res.state == "success") {
+                            layui.layer.msg(res.message);
+                            setTimeout(function () { window.location.href = res.Url; }, 300);
+                        } else {
+                            layui.layer.msg(res.message);
+                        }
+                    }
+                });
             }
         });
     }
@@ -54,7 +68,10 @@
             title: '修改机构',
             url: '/SystemManage/OrgManage/Edit?ID=' + id,
             width: '700px',
-            height: '520px'
+            height: '300px',
+            callBack: function (iframeId) {            
+              top.frames[iframeId].submitForm();
+            }
         });
     }
 
@@ -75,7 +92,7 @@
             <a class="btn btn-primary" onclick="$.reload()"><span class="glyphicon glyphicon-refresh"></span></a>
         </div>
         <div class="btn-group">
-            <a id="NF-add" authorize="yes" class="btn btn-primary dropdown-text" onclick="btn_add()"><i class="fa fa-plus"></i>新建用户</a>
+            <a id="NF-add" authorize="yes" class="btn btn-primary dropdown-text" onclick="btn_add()"><i class="fa fa-plus"></i>新建机构</a>
         </div>
         @*<div class="operate">
                 <ul class="nav nav-pills">
