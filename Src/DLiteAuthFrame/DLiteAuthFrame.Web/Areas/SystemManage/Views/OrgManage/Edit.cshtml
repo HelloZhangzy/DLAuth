@@ -14,10 +14,11 @@
         }
 
         $.submitForm({
-            url: "/SystemManage/OrgManage/UpdateOrg",
+            url: '/SystemManage/OrgManage/AddOrUpdateOrg',
             param: $("#form1").formSerialize(),
+            type: 'POST',
             success: function () {                
-                $.currentWindow().$("#OrgTree").trigger("reloadGrid");
+                $.currentWindow().$('#OrgTree').trigger('reloadGrid');
             }
         })
     }
@@ -29,16 +30,17 @@
         </ul>
 
         <div style="padding-top: 20px; margin-right: 30px;">
-            <table class="form" style="width:500px;">
+            <table style="width:300px;">
                 <tr>
                     <th class="formTitle">上级</th>
                     <td class="formValue">
-                        @Html.DropDownList("OrgList", ViewData["OrgList"] as SelectList, new { @class = "form-control",@id="OrgCode",@name= "OrgCode" })
+                        @Html.DropDownList("OrgList", ViewData["OrgList"] as SelectList, new { @class = "form-control",@id= "ParentCode", @name= "ParentCode" })
                     </td>
                 </tr>
                 <tr hidden="hidden">
-                    <td>
-                        <input id="OrgCde" name="OrgCde" hidden="hidden" class="form-control required" maxlength="100" placeholder="请输入" value="@OrgData.OrgCode" />
+                    <th class="formTitle">编号</th>
+                    <td class="formValue">
+                        <input id="OrgCode" name="OrgCode" type="text"  class="form-control required" maxlength="100" placeholder="请输入" value="@OrgData.OrgCode" />
                     </td>
                 </tr>
                 <tr>                   

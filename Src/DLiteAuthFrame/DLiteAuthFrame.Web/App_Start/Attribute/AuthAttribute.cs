@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Web.Routing;
 
 namespace DLiteAuthFrame.Web.App_Start.Attribute
 {
@@ -25,7 +25,8 @@ namespace DLiteAuthFrame.Web.App_Start.Attribute
             log.Debug("AuthAttribute start");
             if (!CheckLogin())
             {
-                filterContext.Result = new RedirectResult("/Account/Login");
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Account", action = "Login", area = string.Empty }));
+               // filterContext.Result = new RedirectResult("/Account/Login");
             }
             else
             {

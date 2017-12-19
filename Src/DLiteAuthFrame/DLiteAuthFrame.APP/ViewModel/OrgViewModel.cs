@@ -23,5 +23,15 @@ namespace DLiteAuthFrame.APP.ViewModel
         public Guid? UpdateUserCode { get; set; }
 
         public DateTime? UpdateDate { get; set; }
+
+        #region jqGrid Tree 关键参数
+        public int level { get; set; }
+
+        public int parent { get; set; }
+
+        public bool expanded { get; set; }
+
+        public bool isLeaf { get; set; }
+        #endregion
     }
 }

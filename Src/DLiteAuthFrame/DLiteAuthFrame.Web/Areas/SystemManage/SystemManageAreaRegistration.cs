@@ -18,7 +18,6 @@ namespace DLiteAuthFrame.Web.Areas.SystemManage
                 "SystemManage_default",
                 "SystemManage/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
-
             );            
         }
     }

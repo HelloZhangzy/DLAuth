@@ -16,11 +16,12 @@
             ExpandColumn: "OrgName",
             url: "/SystemManage/OrgManage/GetOrgs",
             height: $(window).height() - 96,
+            scroll: "true",
             colModel: [
                 { label: "主键", name: "OrgCode", index: "OrgCode", hidden: true, key: true },
                 { label: "上级编号", name: "ParentCode", index: "ParentCode", hidden: true, key: true },
                 { label: '名称', name: 'OrgName', index: "OrgName", width: 200, align: 'left' },
-                { label: '创建时间', name: 'CreaterDate', index: "CreaterDate", width: 160, align: 'left', formatter: "date", formatoptions: { srcformat: 'yyyy-MM-dd HH:mm:ss', newformat: 'yyyy-MM-dd HH:mm:ss' },
+                { label: '创建时间', name: 'CreaterDate', index: "CreaterDate", width: 160, align: 'left', formatter: "date", formatoptions: {srcformat: 'Y-m-d H:i:s',newformat: 'Y-m-d H:i:s'} },
                 { label: '备注', name: 'OrgExplain', index: "OrgExplain", width: 200, align: 'left' },
                 {
                     name: '功能',
@@ -34,7 +35,13 @@
                             + '<input id="Delete" type="button" class="btn btn-danger btn-xs" value="删除" onclick="' + ccc+'"/>';
                     }
                 }
-            ]
+            ],
+            treeReader: {
+                level_field: "OrgCode",
+                parent_id_field: "ParentCode",
+                leaf_field: "true",
+                expanded_field: "true"
+            }
         });
     };    
 
@@ -68,7 +75,7 @@
             title: '修改机构',
             url: '/SystemManage/OrgManage/Edit?ID=' + id,
             width: '700px',
-            height: '300px',
+            height: '400px',
             callBack: function (iframeId) {            
               top.frames[iframeId].submitForm();
             }
@@ -81,7 +88,10 @@
             title: "新增机构",
             url: "/SystemManage/OrgManage/Edit",
             width: "700px",
-            height: "520px"           
+            height: "400px",
+            callBack: function (iframeId) {
+                top.frames[iframeId].submitForm();
+            }          
         });
     }
 

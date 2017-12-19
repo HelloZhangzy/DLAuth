@@ -40,13 +40,17 @@ namespace DLiteAuthFrame.Web
             builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork));
             builder.RegisterType(typeof(UserService)).As(typeof(IUserService));
 
-            builder.RegisterType(typeof(AuthApp)).As(typeof(IAuthApp));
+            builder.RegisterType(typeof(AuthApp)).As(typeof(IAuthApp)).PropertiesAutowired();
+            builder.RegisterType(typeof(OrgManageApp)).As(typeof(IOrgManageApp)).PropertiesAutowired();
+
             builder.RegisterType(typeof(UserRepository)).As(typeof(IUserRepository));
             builder.RegisterType(typeof(OrgRository)).As(typeof(IOrgRository));
 
             // 注册controller，使用属性注入
-            builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired();
+
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).AsImplementedInterfaces();
+
             builder.RegisterModelBinders(Assembly.GetExecutingAssembly());
             builder.RegisterModelBinderProvider();
 
@@ -57,7 +61,7 @@ namespace DLiteAuthFrame.Web
             //builder.RegisterSource(new ViewRegistrationSource());
 
             // 注册所有的Attribute
-            builder.RegisterFilterProvider();         
+            builder.RegisterFilterProvider();
             
 
             // Set the dependency resolver to be Autofac.

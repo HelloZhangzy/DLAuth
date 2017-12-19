@@ -19,16 +19,12 @@ namespace DLiteAuthFrame.APP.APP
 {
     public class AuthApp : IAuthApp
     {
-        private  IUserService User { get; set; }
-
-        public AuthApp(IUserService _user)
-        {
-            User = _user;
-        }
-
+        public  IUserService User { get; set; }
+      
         public bool Login(string Name, string Pass)
         {
             string ID = User.CheckPassWord(Name, Pass);
+
             if (!string.IsNullOrWhiteSpace(ID))
             {
                 DLSession.GetNewToken(ID);
