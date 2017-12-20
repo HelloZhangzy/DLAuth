@@ -16,7 +16,7 @@ namespace DLiteAuthFrame.APP.IApp
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>
-        OrgViewModel GetOrgInfo(string ID);
+        OrgViewModel GetOrgInfo(Guid ID);
 
         /// <summary>
         /// 获取当前用户可查询的机构Tree
@@ -28,7 +28,7 @@ namespace DLiteAuthFrame.APP.IApp
         /// 获取当前用户可查机构SelectListItem
         /// </summary>
         /// <returns></returns>
-        List<SelectListItem> GetOrgSelect();
+        List<SelectListItem> GetOrgSelect(Guid ID);
 
         /// <summary>
         /// 修改机构
@@ -43,5 +43,13 @@ namespace DLiteAuthFrame.APP.IApp
         /// <param name="ovm"></param>
         /// <returns></returns>
         AjaxResult Add(OrgViewModel ovm);
+
+        /// <summary>
+        /// 删除机构
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        AjaxResult Delete(Guid ID);
+
     }
 }

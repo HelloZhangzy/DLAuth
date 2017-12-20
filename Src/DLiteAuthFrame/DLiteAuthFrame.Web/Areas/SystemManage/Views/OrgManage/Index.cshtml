@@ -10,22 +10,26 @@
     
     function LoadOrgs() {
         var $gridList = $("#OrgTree");
-        $gridList.dataGrid({
+        $gridList.jqGrid({
             treeGrid: true,
-            treeGridModel: "adjacency",
+            datatype: "json",           
+            gridview: true,
+            treeGridModel: "adjacency",        
             ExpandColumn: "OrgName",
             url: "/SystemManage/OrgManage/GetOrgs",
-            height: $(window).height() - 96,
-            scroll: "true",
+            datatype: "json",
+            height: $(window).height() - 96,          
             colModel: [
-                { label: "主键", name: "OrgCode", index: "OrgCode", hidden: true, key: true },
-                { label: "上级编号", name: "ParentCode", index: "ParentCode", hidden: true, key: true },
+                { label: "主键", name: "OrgCode", index: "OrgCode", hidden: true, key: true, align: 'left' },
+                { label: "上级编号", name: "ParentCode", index: "ParentCode", hidden: true, },
                 { label: '名称', name: 'OrgName', index: "OrgName", width: 200, align: 'left' },
-                { label: '创建时间', name: 'CreaterDate', index: "CreaterDate", width: 160, align: 'left', formatter: "date", formatoptions: {srcformat: 'Y-m-d H:i:s',newformat: 'Y-m-d H:i:s'} },
-                { label: '备注', name: 'OrgExplain', index: "OrgExplain", width: 200, align: 'left' },
+                { label: '创建时间', name: 'CreaterDate', index: "CreaterDate", width: 160, align: 'left', formatter: "date", formatoptions: { srcformat: 'Y-m-d H:i:s', newformat: 'Y-m-d H:i:s' } },
+                { label: '备注', name: 'OrgExplain', index: "OrgExplain", width: 200, align: 'left' }
+                ,
                 {
                     name: '功能',
                     width: 150,
+                    align: 'left',
                     formatter: function (value, grid, rows, state) {
                         var rid = rows.OrgCode;
                         var ddd = "Edit('" + rid + "')";
@@ -35,39 +39,41 @@
                             + '<input id="Delete" type="button" class="btn btn-danger btn-xs" value="删除" onclick="' + ccc+'"/>';
                     }
                 }
-            ],
-            treeReader: {
-                level_field: "OrgCode",
-                parent_id_field: "ParentCode",
-                leaf_field: "true",
-                expanded_field: "true"
-            }
+            ]
         });
     };    
 
-    function Delete(id)
-    {
-        $.modalConfirm("注：您确定要【删除】该机构吗？", function (r) {           
-            if (r) {
-                $.ajax({
-                    type: 'POST',
-                    url: '/SystemManage/OrgManage/DelOrg',
-                    data: { ID: id },
-                    dataType: 'JSON',
-                    success: function (res) {
-                        layui.layer.msg(res.state);
-                        if (res.state == "success") {
-                            layui.layer.msg(res.message);
-                            setTimeout(function () { window.location.href = res.Url; }, 300);
-                        } else {
-                            layui.layer.msg(res.message);
-                        }
-                    }
-                });
+    function Delete(id) {
+        $.deleteForm({
+            url: "/SystemManage/OrgManage/DeleteOrg",
+            param: { ID: id },
+            success: function () {
+                $.currentWindow().$("#OrgTree").resetSelection();
+                $.currentWindow().$("#OrgTree").trigger("reloadGrid");
             }
         });
+        //$.modalConfirm("注：您确定要【删除】该机构吗？", function (yes) {           
+        //    if (yes) {                
+        //        $.ajax({
+        //            type: 'POST',
+        //            url: '/SystemManage/OrgManage/DeleteOrg',
+        //            data: { ID: id },
+        //            dataType: 'JSON',
+        //            success: function (res) {
+        //                alert(res.state);
+        //                //layui.layer.msg(res.state);
+        //                //if (res.state == "success") {
+        //                //    layui.layer.msg(res.message);                          
+        //                //} else {
+        //                //    layui.layer.msg(res.message);
+        //                //}
+        //            }
+        //        });
+        //    }            
+        //});
     }
 
+    
     function Edit(id)
     {      
         $.modalOpen({

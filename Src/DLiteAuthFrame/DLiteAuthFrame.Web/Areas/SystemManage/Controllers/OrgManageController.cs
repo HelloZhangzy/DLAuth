@@ -31,11 +31,12 @@ namespace DLiteAuthFrame.Web.Areas.SystemManage.Controllers
         public ActionResult GetOrgs()
         {
             List<OrgViewModel> data = orgApp.GetOrgTree();
-            return Content(data.ToJson());
-        }
-        
+            string ret_s = "{\"rows\": " + data.ToJson() + "}";
+            return Content(ret_s);
+        }               
+
         [HttpPost]
-        public ActionResult GetOrg(string ID)
+        public ActionResult GetOrg(Guid ID)
         {
             return Content(orgApp.GetOrgInfo(ID).ToJson());
         }
@@ -52,19 +53,24 @@ namespace DLiteAuthFrame.Web.Areas.SystemManage.Controllers
             }
             return Content(new AjaxResult { state = ResultType.error.ToString(), message = "数据填写不完整！", data = null }.ToJson());
         }
+
+        public ActionResult DeleteOrg(Guid ID)
+        {
+            return Content(orgApp.Delete(ID).ToJson());
+        }
                  
         [AuthAttribute]
-        public ActionResult Edit(string ID)
+        public ActionResult Edit(Guid ID)
         {
-            var ls = orgApp.GetOrgSelect();
+            var ls = orgApp.GetOrgSelect(ID);
 
-            if (!string.IsNullOrWhiteSpace(ID))
+            if (!(ID==Guid.Empty))
             {
                 var org = orgApp.GetOrgInfo(ID);
 
                 ls.Where(t => t.Value == org.ParentCode.ToString()).FirstOrDefault().Selected = true;
 
-                var temp = ls.Where(t => t.Value == ID).FirstOrDefault();
+                var temp = ls.Where(t => t.Value == ID.ToString()).FirstOrDefault();
 
                 if (temp != null)
                 {

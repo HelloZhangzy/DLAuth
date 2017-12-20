@@ -21,9 +21,9 @@ namespace DLiteAuthFrame.Base.Repository
         {
             return Context.Set<Organization>();
             //return from a in Context.Set<OrgUser>()
-            //       join b in Context.Set<Organization>() on a.OrgCode equals b.OrgCode
-            //       where a.UserCode == UserID
-            //       select b;
+            //       from b in Context.Set<Organization>()
+            //       where a.UserCode == UserID && a.OrgCode==b.OrgCode || a.OrgCode==b.ParentCode
+            //      select b;
         }
 
         public bool DeleteOrg(Guid ID, ref string Msg)

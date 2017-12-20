@@ -25,8 +25,10 @@ namespace DLiteAuthFrame.APP.APP
             var UserID = DLSession.GetCurrLoginCode();
             if (string.IsNullOrWhiteSpace(UserID)) return null;
 
-            var data = orgRository.GetOrgs(Guid.Parse(UserID));
-            return ToTreeViewModel(data.ToList());
+            var data = orgRository.GetOrgs(Guid.Parse(UserID)).OrderBy(t=>t.OrgCode).ToList();
+            List<OrgViewModel> Org_ls = new List<OrgViewModel>();
+            ToTreeViewModel(Org_ls, data, 0, Guid.Empty);
+            return Org_ls;
         }
 
         /// <summary>
@@ -34,10 +36,9 @@ namespace DLiteAuthFrame.APP.APP
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>
-        public OrgViewModel GetOrgInfo(string ID)
+        public OrgViewModel GetOrgInfo(Guid ID)
         {
-            var item = orgRository.Filter(t => t.OrgCode.ToString() == ID).FirstOrDefault();
-           
+            var item = orgRository.Filter(t => t.OrgCode == ID).FirstOrDefault();           
             if (item != null)
             {
                 OrgViewModel ov = new OrgViewModel();
@@ -58,13 +59,19 @@ namespace DLiteAuthFrame.APP.APP
         /// 获取当前用户可查机构SelectListItem
         /// </summary>
         /// <returns></returns>
-        public List<SelectListItem> GetOrgSelect()
+        public List<SelectListItem> GetOrgSelect(Guid ID)
         {
             var UserID = DLSession.GetCurrLoginCode();
+
             if (string.IsNullOrWhiteSpace(UserID)) return null;
 
             var data = orgRository.GetOrgs(Guid.Parse(UserID)).ToList();
-            return ToViewModel(data);
+            
+            List<SelectListItem> ls = new List<SelectListItem>();
+            
+            ToViewModel(ls, data, "",Guid.Empty,ID);
+            
+            return ls;
         }
 
         /// <summary>
@@ -101,6 +108,7 @@ namespace DLiteAuthFrame.APP.APP
             if (Count > 0) return new AjaxResult { state = ResultType.error.ToString(), message = "机构已存在！", data = null };
 
             Organization org = new Organization();
+            org.OrgCode=Guid.NewGuid();
             org.ParentCode = ovm.ParentCode;
             org.OrgName = ovm.OrgName;
             org.OrgExplain = ovm.OrgExplain;
@@ -110,12 +118,30 @@ namespace DLiteAuthFrame.APP.APP
             return new AjaxResult { state = ResultType.success.ToString(), message = "操作成功！", data = null };
         }
 
+        public AjaxResult Delete(Guid ID)
+        {
+            var org = orgRository.Find(t => t.OrgCode == ID);
+            if (org==null) return new AjaxResult { state = ResultType.error.ToString(), message = "机构不存在！", data = null };
+
+            var count = orgRository.Filter(t => t.ParentCode == org.OrgCode).Count();
+            if (count>0)
+            {
+                return new AjaxResult { state = ResultType.error.ToString(), message = "存在子机构，请先删除子机构！", data = null };
+            }
+            else
+            {
+                orgRository.Delete(org);
+                return new AjaxResult { state = ResultType.success.ToString(), message = "操作成功！", data = null };
+            }
+        }
+
+
         private List<OrgViewModel> ToTreeViewModel(List<Organization> orgs)
         {
             List<OrgViewModel> Org_ls = new List<OrgViewModel>();
 
             foreach (var item in orgs)
-            {
+            {                
                 OrgViewModel ov = new OrgViewModel();
                 ov.CreaterDate = item.CreaterDate;
                 ov.CreateUserCode = item.CreateUserCode;
@@ -136,9 +162,9 @@ namespace DLiteAuthFrame.APP.APP
             return Org_ls;
         }
 
-        private void ToTreeViewModel(List<OrgViewModel> ls,List<Organization> orgs,int ParentLevel, Guid ParentOrgCode)
+        private void ToTreeViewModel(List<OrgViewModel> ls,List<Organization> orgs,int Level, Guid ParentOrgCode)
         {
-            foreach (var item in orgs)
+            foreach (var item in orgs.Where(t=>t.ParentCode==ParentOrgCode))
             {
                 OrgViewModel ov = new OrgViewModel();
                 ov.CreaterDate = item.CreaterDate;
@@ -149,12 +175,19 @@ namespace DLiteAuthFrame.APP.APP
                 ov.ParentCode = item.ParentCode;
                 ov.UpdateDate = item.UpdateDate;
                 ov.UpdateUserCode = item.UpdateUserCode;
-                ov.level = ParentLevel+1;
-                ov.parent = ParentLevel;
-                ov.isLeaf = true;
-                ov.expanded = false;
+                ov.level = Level;
+                ov.parent = Level - 1 < 0 ? 0 : Level - 1;
+                if (orgs.Where(t => t.ParentCode == item.OrgCode).Count() > 0)
+                    ov.isLeaf = false;
+                else
+                   ov.isLeaf = true;
+
+                ov.expanded = true;
                 ls.Add(ov);
-                ToTreeViewModel(ls, orgs.Where(t => t.ParentCode == item.OrgCode).ToList(), ParentLevel+1, item.OrgCode);
+                if (orgs.Where(t=>t.ParentCode==item.OrgCode).Count()>0)
+                {
+                    ToTreeViewModel(ls, orgs, Level + 1, item.OrgCode);
+                }                
             }
         }
 
@@ -184,29 +217,29 @@ namespace DLiteAuthFrame.APP.APP
             return ovm;
         }
 
-        /// <summary>
-        /// 转换为Select标签识别类型
-        /// </summary>
-        /// <param name="orgs"></param>
-        /// <returns></returns>
-        private List<SelectListItem> ToViewModel(List<Organization> orgs)
-        {
-            List<SelectListItem> ovm = new List<SelectListItem>();
-            SelectListItem rootItem = new SelectListItem();
-            rootItem.Value = "00000000-0000-0000-0000-000000000000";
-            rootItem.Text = "根节点";
-            rootItem.Disabled = true;
-            ovm.Add(rootItem);
-            foreach (var item in orgs)
-            {
-                SelectListItem ov = new SelectListItem();
-                ov.Value = item.OrgCode.ToString();
-                ov.Text = item.OrgName;
-                ovm.Add(ov);
-                ToViewModel(ovm, orgs.Where(t => t.OrgCode == item.OrgCode).ToList(), "  ", item.OrgCode.ToString());
-            }
-            return ovm;
-        }
+        ///// <summary>
+        ///// 转换为Select标签识别类型
+        ///// </summary>
+        ///// <param name="orgs"></param>
+        ///// <returns></returns>
+        //private List<SelectListItem> ToViewModel(List<Organization> orgs)
+        //{
+        //    List<SelectListItem> ovm = new List<SelectListItem>();
+        //    SelectListItem rootItem = new SelectListItem();
+        //    rootItem.Value = "00000000-0000-0000-0000-000000000000";
+        //    rootItem.Text = "根节点";
+        //    rootItem.Disabled = true;
+        //    ovm.Add(rootItem);
+        //    foreach (var item in orgs)
+        //    {
+        //        SelectListItem ov = new SelectListItem();
+        //        ov.Value = item.OrgCode.ToString();
+        //        ov.Text = item.OrgName;
+        //        ovm.Add(ov);
+        //        //ToViewModel(ovm, orgs.Where(t => t.OrgCode == item.OrgCode).ToList(), "  ", item.OrgCode);
+        //    }
+        //    return ovm;
+        //}
 
         /// <summary>
         /// 递归转换为select标签识别类型
@@ -215,15 +248,27 @@ namespace DLiteAuthFrame.APP.APP
         /// <param name="orgs"></param>
         /// <param name="Lines"></param>
         /// <param name="ParentID"></param>
-        private void ToViewModel(List<SelectListItem> ls, List<Organization> orgs, string Lines, string ParentID = "00000000-0000-0000-0000-000000000000")
+        private void ToViewModel(List<SelectListItem> ls, List<Organization> orgs, string Lines, Guid ParentID,Guid DisableID)
         {
-            foreach (var item in orgs.Where(t => t.ParentCode.ToString() == ParentID))
+            Guid toID = Guid.Empty;
+
+            foreach (var item in orgs.Where(t => t.ParentCode == ParentID))
             {
                 SelectListItem ov = new SelectListItem();
                 ov.Value = item.OrgCode.ToString();
-                ov.Text = item.OrgName;
+                ov.Text = Lines +" "+ item.OrgName;               
+                if (DisableID==item.OrgCode)
+                { 
+                  toID = item.OrgCode;
+                  ov.Disabled = true;
+                }
+                else
+                { 
+                  toID = DisableID;
+                  ov.Disabled = false;
+                }
                 ls.Add(ov);
-                ToViewModel(ls, orgs.Where(t => t.OrgCode == item.OrgCode).ToList(), Lines + "  ", item.OrgCode.ToString());
+                ToViewModel(ls, orgs, Lines + "—", item.OrgCode, toID);
             }
         }
 

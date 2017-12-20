@@ -29,9 +29,13 @@ namespace DLiteAuthFrame.APP.ViewModel
 
         public int parent { get; set; }
 
+        public bool isLeaf { get; set; }
+
         public bool expanded { get; set; }
 
-        public bool isLeaf { get; set; }
+        public bool loaded { get { return true; } }
+
+        public string icon_field { get { return ""; } }
         #endregion
     }
 }
