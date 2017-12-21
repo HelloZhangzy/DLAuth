@@ -40,11 +40,13 @@ namespace DLiteAuthFrame.Web
             builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork));
             builder.RegisterType(typeof(UserService)).As(typeof(IUserService));
 
-            builder.RegisterType(typeof(AuthApp)).As(typeof(IAuthApp)).PropertiesAutowired();
-            builder.RegisterType(typeof(OrgManageApp)).As(typeof(IOrgManageApp)).PropertiesAutowired();
-
             builder.RegisterType(typeof(UserRepository)).As(typeof(IUserRepository));
             builder.RegisterType(typeof(OrgRository)).As(typeof(IOrgRository));
+
+            builder.RegisterType(typeof(AuthApp)).As(typeof(IAuthApp)).PropertiesAutowired();
+            builder.RegisterType(typeof(OrgManageApp)).As(typeof(IOrgManageApp)).PropertiesAutowired();
+            builder.RegisterType(typeof(UserManageApp)).As(typeof(IUserManageApp)).PropertiesAutowired();
+
 
             // 注册controller，使用属性注入
             builder.RegisterControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired();

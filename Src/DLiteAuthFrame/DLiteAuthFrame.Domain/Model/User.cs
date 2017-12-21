@@ -1,8 +1,7 @@
 namespace DLiteAuthFrame.Domain.Model
 {
     using System;
-    using System.Collections.Generic;
-   
+    using System.Collections.Generic;   
    
     public partial class User
     {        

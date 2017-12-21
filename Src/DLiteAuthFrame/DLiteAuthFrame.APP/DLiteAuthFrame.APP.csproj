@@ -49,13 +49,17 @@
   <ItemGroup>
     <Compile Include="APP\AuthApp.cs" />
     <Compile Include="APP\OrgManageApp.cs" />
+    <Compile Include="APP\UserManageApp.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="IApp\IAuthApp.cs" />
     <Compile Include="IApp\IOrgManageApp.cs" />
+    <Compile Include="IApp\IUserManageApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\ResultModel.cs" />
     <Compile Include="ViewModel\MenuViewModel.cs" />
     <Compile Include="ViewModel\OrgViewModel.cs" />
     <Compile Include="ViewModel\TreeViewModel.cs" />
+    <Compile Include="ViewModel\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DLiteAuthFrame.Base\DLiteAuthFrame.Base.csproj">

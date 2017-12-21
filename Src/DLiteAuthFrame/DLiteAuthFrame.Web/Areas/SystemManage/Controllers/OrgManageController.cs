@@ -60,8 +60,10 @@ namespace DLiteAuthFrame.Web.Areas.SystemManage.Controllers
         }
                  
         [AuthAttribute]
-        public ActionResult Edit(Guid ID)
+        public ActionResult Edit(string id)
         {
+            Guid ID = Guid.Parse(id);
+
             var ls = orgApp.GetOrgSelect(ID);
 
             if (!(ID==Guid.Empty))

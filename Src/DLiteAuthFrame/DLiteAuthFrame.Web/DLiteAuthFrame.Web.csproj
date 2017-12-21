@@ -1887,6 +1887,8 @@
     <Content Include="Content\js\simditor\css\simditor.scss" />
     <Content Include="Areas\SystemManage\Views\OrgManage\Index.cshtml" />
     <Content Include="Areas\SystemManage\Views\OrgManage\Edit.cshtml" />
+    <Content Include="Areas\SystemManage\Views\UserManage\PassWord.cshtml" />
+    <Content Include="Areas\SystemManage\Views\UserManage\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
