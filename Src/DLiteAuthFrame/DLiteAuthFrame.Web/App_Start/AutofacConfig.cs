@@ -41,6 +41,7 @@ namespace DLiteAuthFrame.Web
             builder.RegisterType(typeof(UserService)).As(typeof(IUserService));
             builder.RegisterType(typeof(AuthApp)).As(typeof(IAuthApp));
             builder.RegisterType(typeof(UserRepository)).As(typeof(IUserRepository));
+            builder.RegisterType(typeof(OrgRository)).As(typeof(IOrgRository));
 
             // 注册controller，使用属性注入
             builder.RegisterControllers(Assembly.GetExecutingAssembly());

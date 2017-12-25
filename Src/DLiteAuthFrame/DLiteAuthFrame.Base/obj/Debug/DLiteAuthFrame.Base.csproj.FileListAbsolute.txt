@@ -46,7 +46,6 @@ D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAut
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAuthFrame.Base.pdb
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\Autofac.dll
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\Autofac.Integration.Mvc.dll
-D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAuthFrame.APP.dll
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAuthFrame.Comm.dll
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAuthFrame.Domain.dll
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\EntityFramework.dll
@@ -63,7 +62,6 @@ D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\Newtonso
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\log4net.dll
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\NPOI.dll
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\ICSharpCode.SharpZipLib.dll
-D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAuthFrame.APP.pdb
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAuthFrame.Comm.pdb
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\DLiteAuthFrame.Domain.pdb
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Base\bin\Debug\Autofac.xml

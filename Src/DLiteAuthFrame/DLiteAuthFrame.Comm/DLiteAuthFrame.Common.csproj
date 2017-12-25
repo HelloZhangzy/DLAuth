@@ -105,10 +105,6 @@
     <Compile Include="Web\TreeGrid\TreeGrid.cs" />
     <Compile Include="Web\TreeGrid\TreeGridModel.cs" />
     <Compile Include="Web\TreeQuery.cs" />
-    <Compile Include="Web\TreeView\TreeView.cs" />
-    <Compile Include="Web\TreeView\TreeViewModel.cs" />
-    <Compile Include="Web\Tree\TreeSelect.cs" />
-    <Compile Include="Web\Tree\TreeSelectModel.cs" />
     <Compile Include="Web\WebHelper.cs" />
   </ItemGroup>
   <ItemGroup>

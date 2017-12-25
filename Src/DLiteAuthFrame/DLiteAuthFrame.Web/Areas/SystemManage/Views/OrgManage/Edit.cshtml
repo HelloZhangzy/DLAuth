@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_From.cshtml";
+}
+<script>
+  
+    $(function () {      
+        var keyValue = $.request("ID");
+       // if (!!keyValue) {
+            $.ajax({
+                url: '/SystemManage/OrgManage/GetOrg',
+                data: { ID: keyValue },                
+                dataType: 'JSON',
+                type: 'POST',   
+                success: function (data) {
+                    $('#form1').formSerialize(data);
+                }
+        });        
+    });    
+</script>
+<form id="form1">
+    <div style="margin-top: 10px; margin-left: 10px; margin-right: 10px;">
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="#">基本信息</a></li>        
+        </ul>
+        <div style="padding-top: 20px; margin-right: 30px;">
+            <table class="form">
+                <tr>
+                    <th class="formTitle">上级</th>
+                    <td class="formValue">
+                        @*<select id="F_ParentId" name="F_ParentId" class="form-control required">
+                            <option value="0">父节点</option>
+                        </select>*@
+                    </td>                    
+                </tr>
+                <tr>
+                    <th class="formTitle">名称</th>
+                    <td class="formValue">
+                        <input id="OrgName" name="OrgName" type="text" class="form-control required" maxlength="100" placeholder="请输入名称" />
+                    </td>                    
+                </tr>
+                <tr>
+                    <th class="formTitle" valign="top" style="padding-top: 5px;">备注</th>
+                    <td class="formValue" colspan="3">
+                        <textarea id="OrgExplain" name="OrgExplain" class="form-control" style="height: 60px;" maxlength="300"></textarea>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</form>

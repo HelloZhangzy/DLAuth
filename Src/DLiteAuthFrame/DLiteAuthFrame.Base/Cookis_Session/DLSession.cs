@@ -12,8 +12,8 @@ namespace DLiteAuthFrame.Base.Cookis_Session
     public static class DLSession
     {
         const string CookiesName = "DLiteAuthFrame_Cookies";
-        private static HttpCookie cookie = HttpContext.Current.Request.Cookies[CookiesName];
-        private static HttpSessionState session = HttpContext.Current.Session;
+        //private static HttpCookie cookie = HttpContext.Current.Request.Cookies[CookiesName];
+        //private static HttpSessionState session = HttpContext.Current.Session;
 
         public static string GetCurrLoginCode()
         {
@@ -32,12 +32,16 @@ namespace DLiteAuthFrame.Base.Cookis_Session
 
         public static string GetToken()
         {
+           var  cookie = HttpContext.Current.Request.Cookies[CookiesName];     
+
             if (cookie == null) return "";
             return DESEncrypt.Decrypt(cookie.Value);
         }
 
         public static void GetNewToken(string LoginCode)
         {
+           var cookie = HttpContext.Current.Request.Cookies[CookiesName];
+           var session = HttpContext.Current.Session;
             string ToKen = "";
             if (cookie == null)
             {

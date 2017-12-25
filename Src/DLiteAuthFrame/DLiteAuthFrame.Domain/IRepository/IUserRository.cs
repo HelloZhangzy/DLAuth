@@ -28,6 +28,13 @@ namespace DLiteAuthFrame.Domain.IRepository
         /// <returns></returns>
         IQueryable<Menu> GetMenu(Guid id);
 
+        /// <summary>
+        /// 根据机构ID获取用户信息
+        /// </summary>
+        /// <param name="OrgID"></param>
+        /// <returns></returns>
+        IQueryable<User> GetUsers(Guid OrgID);
+
 
     }
 }

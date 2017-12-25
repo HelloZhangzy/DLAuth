@@ -25,6 +25,7 @@ D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\Newtonsof
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\log4net.xml
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\NPOI.xml
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\zh-Hans\System.Web.Mvc.resources.dll
+<<<<<<< HEAD
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\DLiteAuthFrame.Comm.dll
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\System.Web.Mvc.dll
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\Newtonsoft.Json.dll
@@ -37,3 +38,15 @@ D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\Newto
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\log4net.xml
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\NPOI.xml
 D:\procedure\GitHub\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\zh-Hans\System.Web.Mvc.resources.dll
+=======
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\DLiteAuthFrame.Base.dll
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\EntityFramework.dll
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\Autofac.dll
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\EntityFramework.Extended.dll
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\DLiteAuthFrame.Base.pdb
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\DLiteAuthFrame.Base.dll.config
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\EntityFramework.xml
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\Autofac.xml
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\EntityFramework.Extended.xml
+D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.APP\bin\Debug\EntityFramework.Extended.dll.config
+>>>>>>> 820c140d7cd8a7cfd6ca5f87f701b286a2bca7ec

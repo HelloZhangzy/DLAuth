@@ -37,5 +37,17 @@ namespace DLiteAuthFrame.Base.Repository
                    where a.UserCode == id
                    select b;
         }
+
+        /// <summary>
+        /// 根据机构ID获取用户信息
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        public IQueryable<User> GetUsers(Guid OrgID)
+        {
+            return from a in Context.Set<OrgUser>().Where(t => t.OrgCode == OrgID)
+                   join b in Context.Set<User>() on a.UserCode equals b.UserCode
+                   select b;
+        }
     }
 }

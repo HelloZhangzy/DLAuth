@@ -51,6 +51,7 @@
     <Compile Include="IApp\IAuthApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\MenuViewModel.cs" />
+    <Compile Include="ViewModel\OrgViewModel.cs" />
     <Compile Include="ViewModel\TreeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

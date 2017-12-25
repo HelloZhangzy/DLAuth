@@ -23,7 +23,7 @@ namespace DLiteAuthFrame.Domain.Services.AuthServices
 
         public void Add(User user)
         {
-            _user.Create(user);                
+            _user.Create(user);
         }
 
         public void Delete(User user)
@@ -70,6 +70,7 @@ namespace DLiteAuthFrame.Domain.Services.AuthServices
         {
             return _user.Filter(filter, out total, index, size);
         }
+
 
         public void SetOrg(Guid UserID, List<Guid> Orgs)
         {
