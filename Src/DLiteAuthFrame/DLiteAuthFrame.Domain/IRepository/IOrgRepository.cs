@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DLiteAuthFrame.Domain.IRepository
 {
-    public interface IOrgRository : IRepository<Organization>
+    public interface IOrgRepository : IRepository<Organization>
     {
         /// <summary>
         /// 根据用户编号获取组织机构

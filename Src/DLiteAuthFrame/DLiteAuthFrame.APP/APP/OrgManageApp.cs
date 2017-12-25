@@ -14,7 +14,7 @@ namespace DLiteAuthFrame.APP.APP
 {
     public class OrgManageApp:IOrgManageApp
     {
-        public IOrgRository orgRository { get; set; }
+        public IOrgRepository orgRository { get; set; }
 
         /// <summary>
         /// 获取当前用户可查询的机构
@@ -90,7 +90,6 @@ namespace DLiteAuthFrame.APP.APP
                 org.UpdateDate = DateTime.Now;
                 org.UpdateUserCode = Guid.Parse(DLSession.GetCurrLoginCode());
                 orgRository.Update(org);
-
                 return new AjaxResult { state = ResultType.success.ToString(), message = "操作成功！", data = null };
             }
             return new AjaxResult { state = ResultType.error.ToString(), message = "未找到机构！", data = null };            
@@ -152,7 +151,7 @@ namespace DLiteAuthFrame.APP.APP
                 ov.UpdateDate = item.UpdateDate;
                 ov.UpdateUserCode = item.UpdateUserCode;
                 ov.level = 0;
-                ov.parent = 0;
+                ov.parent = Guid.Empty;
                 ov.isLeaf = false;
                 ov.expanded = true;
                 Org_ls.Add(ov);
@@ -175,14 +174,22 @@ namespace DLiteAuthFrame.APP.APP
                 ov.ParentCode = item.ParentCode;
                 ov.UpdateDate = item.UpdateDate;
                 ov.UpdateUserCode = item.UpdateUserCode;
-                ov.level = Level;
-                ov.parent = Level - 1 < 0 ? 0 : Level - 1;
-                if (orgs.Where(t => t.ParentCode == item.OrgCode).Count() > 0)
-                    ov.isLeaf = false;
-                else
-                   ov.isLeaf = true;
 
-                ov.expanded = true;
+                ov.level = Level;
+                ov.id = item.OrgCode;
+                ov.parent = item.ParentCode;
+                if (orgs.Where(t => t.ParentCode == item.OrgCode).Count() > 0)
+                { 
+                    ov.isLeaf = false;
+                    ov.expanded = true;
+                }
+                else
+                { 
+                   ov.isLeaf = true;
+                   ov.expanded = false;
+                }
+                ov.loaded = true;
+                
                 ls.Add(ov);
                 if (orgs.Where(t=>t.ParentCode==item.OrgCode).Count()>0)
                 {
@@ -271,6 +278,5 @@ namespace DLiteAuthFrame.APP.APP
                 ToViewModel(ls, orgs, Lines + "—", item.OrgCode, toID);
             }
         }
-
     }
 }

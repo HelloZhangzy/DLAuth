@@ -33,5 +33,9 @@ namespace DLiteAuthFrame.APP.ViewModel
         public Guid? UpdateUserCode { get; set; }
 
         public DateTime? UpdateDate { get; set; }
+
+        public Guid? OrgCode { get; set; }
+
+        
     }
 }

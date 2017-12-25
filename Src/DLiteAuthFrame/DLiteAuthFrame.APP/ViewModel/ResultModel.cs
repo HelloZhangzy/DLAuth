@@ -32,38 +32,15 @@ namespace DLiteAuthFrame.APP.ViewModel
         }
         public static ResultModel info(string _msg, string _url = "", object _data = null)
         {
-            return new ResultModel { state = ResultType.success.ToString(), message = _msg, Url = _url, data = _data };
+            return new ResultModel { state = ResultType.info.ToString(), message = _msg, Url = _url, data = _data };
         }
         public static ResultModel warning(string _msg, string _url = "", object _data = null)
         {
-            return new ResultModel { state = ResultType.success.ToString(), message = _msg, Url = _url, data = _data };
+            return new ResultModel { state = ResultType.warning.ToString(), message = _msg, Url = _url, data = _data };
         }
         public static ResultModel error(string _msg, string _url = "", object _data = null)
         {
-            return new ResultModel { state = ResultType.success.ToString(), message = _msg, Url = _url, data = _data };
+            return new ResultModel { state = ResultType.error.ToString(), message = _msg, Url = _url, data = _data };
         }
-    }
-    
-    ///// <summary>
-    ///// 表示 ajax 操作结果类型的枚举
-    ///// </summary>
-    //public enum ResultType
-    //{
-    //    /// <summary>
-    //    /// 消息结果类型
-    //    /// </summary>
-    //    info,
-    //    /// <summary>
-    //    /// 成功结果类型
-    //    /// </summary>
-    //    success,
-    //    /// <summary>
-    //    /// 警告结果类型
-    //    /// </summary>
-    //    warning,
-    //    /// <summary>
-    //    /// 异常结果类型
-    //    /// </summary>
-    //    error
-    //}
+    }    
 }

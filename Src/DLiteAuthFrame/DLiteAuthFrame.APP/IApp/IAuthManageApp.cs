@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace DLiteAuthFrame.APP.IApp
 {
-    public interface IAuthApp
+    public interface IAuthManageApp
     {
         bool Login(string Name, string Pass);        
 
         bool CheckAuth();
 
-        MenuViewModel GetMenu();
+        MenuNavViewModel GetMenu();
 
         User GetUserInfo();
     }

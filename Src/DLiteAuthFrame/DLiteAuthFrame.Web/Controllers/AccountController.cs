@@ -12,9 +12,9 @@ namespace DLiteAuthFrame.Web.Controllers
     public class AccountController : Controller
     {
 
-        private IAuthApp Auth = null;
+        private IAuthManageApp Auth = null;
 
-        public AccountController(IAuthApp _auth)
+        public AccountController(IAuthManageApp _auth)
         {
             Auth = _auth;
         }
@@ -29,7 +29,6 @@ namespace DLiteAuthFrame.Web.Controllers
         public ActionResult Login(string Name, string PassWord)
         {
             if (Auth.Login(Name, PassWord))
-
                 return Content(ResultModel.success("登录成功", "/Home/Index").ToJson());
             else
                 return Content(ResultModel.success("账号或密码错误!", "").ToJson());            

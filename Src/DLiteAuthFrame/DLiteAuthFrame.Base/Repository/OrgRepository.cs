@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace DLiteAuthFrame.Base.Repository
 {
-    public class OrgRository : Repository<Organization>, IOrgRository
+    public class OrgRepository : Repository<Organization>, IOrgRepository
     {
-        public OrgRository(DbContext context) : base(context)
+        public OrgRepository(DbContext context) : base(context)
         {
 
         }

@@ -10,11 +10,7 @@ namespace DLiteAuthFrame.Web.Controllers
 {
     public class HomeController : Controller
     {
-        IAuthApp auth = null;
-        public HomeController(IAuthApp _auth)
-        {
-            auth = _auth;
-        }
+        public IAuthManageApp auth { get; set; }        
 
         [AuthAttribute]
         public ActionResult Index()

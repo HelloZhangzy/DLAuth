@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DLiteAuthFrame.APP.ViewModel
 {
-    public class OrgViewModel
+    public class OrgViewModel:JQGridViewModel
     {    
         public Guid OrgCode { get; set; }
 
@@ -22,20 +22,6 @@ namespace DLiteAuthFrame.APP.ViewModel
 
         public Guid? UpdateUserCode { get; set; }
 
-        public DateTime? UpdateDate { get; set; }
-
-        #region jqGrid Tree 关键参数
-        public int level { get; set; }
-
-        public int parent { get; set; }
-
-        public bool isLeaf { get; set; }
-
-        public bool expanded { get; set; }
-
-        public bool loaded { get { return true; } }
-
-        public string icon_field { get { return ""; } }
-        #endregion
+        public DateTime? UpdateDate { get; set; }        
     }
 }

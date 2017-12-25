@@ -233,7 +233,6 @@ D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\Microsoft.AI.Wi
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\Microsoft.AI.Web.xml
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\EntityFramework.Extended.xml
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\EntityFramework.Extended.dll.config
-D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\log4net.xml
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\NPOI.xml
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\zh-Hans\System.Web.Helpers.resources.dll
 D:\Projects\Git\DLAuth\Src\DLiteAuthFrame\DLiteAuthFrame.Web\bin\zh-Hans\System.Web.Mvc.resources.dll

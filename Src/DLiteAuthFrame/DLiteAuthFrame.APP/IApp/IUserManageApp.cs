@@ -25,6 +25,13 @@ namespace DLiteAuthFrame.APP.IApp
         ResultModel UpdateState(Guid UserID);
 
         /// <summary>
+        /// 新增用户
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        ResultModel AddUser(UserViewModel user);
+
+        /// <summary>
         /// 修改用户信息
         /// </summary>
         /// <param name="user"></param>
@@ -48,8 +55,19 @@ namespace DLiteAuthFrame.APP.IApp
         /// <returns></returns>
         ResultModel UpdatePassWord(Guid UserID, string OldPass, string NewPass);
 
+        /// <summary>
+        /// 获取用户信息
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        UserViewModel GetUserInfo(Guid ID);
 
-
-
+        /// <summary>
+        /// 设置角色
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="roles"></param>
+        /// <returns></returns>
+        ResultModel SetRole(Guid userId, List<Guid> roles);
     }
 }

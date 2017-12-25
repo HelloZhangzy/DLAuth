@@ -49,5 +49,10 @@ namespace DLiteAuthFrame.Base.Repository
                    join b in Context.Set<User>() on a.UserCode equals b.UserCode
                    select b;
         }
+
+        public int SetOrg(Guid id, List<Guid> orgls)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

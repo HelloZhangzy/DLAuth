@@ -100,7 +100,7 @@
                                 </div>
                             </div>
 
-                            @helper DisplayList(List<MenuViewModel> model)
+                            @helper DisplayList(List<MenuNavViewModel> model)
                             {
                                 if (model.Count > 0)
                                 {
@@ -126,7 +126,7 @@
                             }
                             <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav">
                                 <ul class="nav nav-pills nav-stacked">
-                                    @DisplayList((ViewData["MenuViewModel"] as DLiteAuthFrame.APP.ViewModel.MenuViewModel).Node)
+                                    @DisplayList((ViewData["MenuViewModel"] as DLiteAuthFrame.APP.ViewModel.MenuNavViewModel).Node)
                                 </ul>
                             </div>                                
                        </div>

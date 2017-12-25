@@ -35,6 +35,14 @@ namespace DLiteAuthFrame.Domain.IRepository
         /// <returns></returns>
         IQueryable<User> GetUsers(Guid OrgID);
 
+        /// <summary>
+        /// 设置机构
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="orgls"></param>
+        /// <returns></returns>
+        int SetOrg(Guid id, List<Guid> orgls);
+
 
     }
 }

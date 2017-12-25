@@ -175,6 +175,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\SystemManage\Controllers\MenuManageController.cs" />
     <Compile Include="Areas\SystemManage\Controllers\OrgManageController.cs" />
     <Compile Include="Areas\SystemManage\Controllers\UserManageController.cs" />
     <Compile Include="Areas\SystemManage\SystemManageAreaRegistration.cs" />
@@ -1327,10 +1328,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\iconfont.eot" />
-    <Content Include="fonts\iconfont.svg" />
-    <Content Include="fonts\iconfont.ttf" />
-    <Content Include="fonts\iconfont.woff" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
@@ -1889,6 +1886,8 @@
     <Content Include="Areas\SystemManage\Views\OrgManage\Edit.cshtml" />
     <Content Include="Areas\SystemManage\Views\UserManage\PassWord.cshtml" />
     <Content Include="Areas\SystemManage\Views\UserManage\Edit.cshtml" />
+    <Content Include="Areas\SystemManage\Views\MenuManage\Index.cshtml" />
+    <Content Include="Areas\SystemManage\Views\MenuManage\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

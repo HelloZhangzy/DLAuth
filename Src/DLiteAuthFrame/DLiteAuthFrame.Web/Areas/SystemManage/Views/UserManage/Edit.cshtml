@@ -1,17 +1,37 @@
 ﻿@{
-    Layout = null;
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_From.cshtml";
 }
 
-<!DOCTYPE html>
+<script>
+    function submitForm() {
+        if (!$('#form1').formValid()) {
+            return false;
+        }
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-    
+        if($('#PassWord').val() != $('#ConfirmPassWord').val())
+        {
+            $('#ConfirmPassWord').focus();
+            $.modalMsg("两次密码输录不一致！", 'error');
+            return false;
+        }
+
+        $.submitForm({
+            url: '/SystemManage/UserManage/ResetPassWord',
+            param: $("#form1").formSerialize(),
+            type: 'POST',
+            success: function () {
+                $.currentWindow().$('#UserList').trigger('reloadGrid');
+            }
+        })
+    }
+
+</script>
+<form id="form1">
+    <div style="margin-top: 10px; margin-left: 10px; margin-right: 10px;">
+        @Html.DropDownList("OrgList", ViewData["OrgList"] as SelectList, new { @class = "form-control", @id = "ParentCode", @name = "ParentCode" })
+        <input id="ID" value="@ViewData["ID"]" hidden="hidden" />
+        <input id="PassWord" type="password" maxlength="50" class="form-control required" placeholder="新密码" />
+        <input id="ConfirmPassWord" type="password" maxlength="50" class="form-control required" placeholder="确认密码" />
     </div>
-</body>
-</html>
+</form>

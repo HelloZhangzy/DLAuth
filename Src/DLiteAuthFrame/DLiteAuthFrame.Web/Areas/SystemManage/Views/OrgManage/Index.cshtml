@@ -18,8 +18,9 @@
             ExpandColumn: "OrgName",
             url: "/SystemManage/OrgManage/GetOrgs",
             datatype: "json",
+            loadonce: true,
             width: $(window).width()+5,
-            height: $(window).height() - 90,          
+            height: $(window).height() - 90, 
             colModel: [
                 { label: "主键", name: "OrgCode", index: "OrgCode", hidden: true, key: true, align: 'left' },
                 { label: "上级编号", name: "ParentCode", index: "ParentCode", hidden: true, },

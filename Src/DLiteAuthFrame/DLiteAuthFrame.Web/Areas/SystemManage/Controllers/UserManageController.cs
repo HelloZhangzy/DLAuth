@@ -19,7 +19,8 @@ namespace DLiteAuthFrame.Web.Areas.SystemManage.Controllers
     {
         public IUserRepository _user { get; set; }
 
-        public IUserManageApp userApp {get;set;}
+        public IUserManageApp userApp { get;set; }
+        public IOrgManageApp orgApp { get; set; }
                 
         [AuthAttribute]
         public ActionResult Index()
@@ -91,9 +92,32 @@ namespace DLiteAuthFrame.Web.Areas.SystemManage.Controllers
         [HttpGet]
         public ActionResult Edit(string ID)
         {
-            ViewData["ID"] = ID;
+           
+            var user=new UserViewModel();
+
+            var ls = orgApp.GetOrgSelect(Guid.Empty);
+
+            if (string.IsNullOrEmpty(ID))
+            {
+                user = userApp.GetUserInfo(Guid.Parse(ID));
+                ls.Where(t => t.Value == user.ToString()).FirstOrDefault().Selected = true;
+            }
+            ViewData["UserInfo"] = user;
+            ViewData["OrgList"] = ls;
             return View();
         }
+
+        public ActionResult AddOrUpdateUserInfo(UserViewModel info)
+        {
+            if (info.UserCode == null)
+            {
+                return Content(userApp.AddUser(info).ToJson());
+            }
+            else
+                return Content(userApp.UpdateUserInfo(info).ToJson());
+        }
+
+        
 
         [AuthAttribute]
         [HttpPost]

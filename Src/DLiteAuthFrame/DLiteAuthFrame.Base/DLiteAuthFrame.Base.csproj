@@ -106,8 +106,10 @@
     <Compile Include="Model\Mapping\UserRoleMap.cs" />
     <Compile Include="Model\Mapping\UserSetMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\OrgRository.cs" />
+    <Compile Include="Repository\MenuRepository.cs" />
+    <Compile Include="Repository\OrgRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\RoleRepository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
     <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>

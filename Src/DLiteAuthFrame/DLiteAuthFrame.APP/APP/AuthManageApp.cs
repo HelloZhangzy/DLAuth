@@ -17,7 +17,7 @@ using System.Web.SessionState;
 
 namespace DLiteAuthFrame.APP.APP
 {
-    public class AuthApp : IAuthApp
+    public class AuthManageApp : IAuthManageApp
     {
         public  IUserService User { get; set; }
       
@@ -42,16 +42,16 @@ namespace DLiteAuthFrame.APP.APP
         public User GetUserInfo()
         {
             string ID = DLSession.GetCurrLoginCode();
-            if (string.IsNullOrWhiteSpace(ID)) return null;
+            if (string.IsNullOrWhiteSpace(ID)) return new User();
             return User.GetUser(Guid.Parse(ID));
         }
 
-        public MenuViewModel GetMenu()
+        public MenuNavViewModel GetMenu()
         {
             string ID = DLSession.GetCurrLoginCode();
             if (string.IsNullOrWhiteSpace(ID)) return null;
             List<Menu> menu=User.GetMenu(Guid.Parse(ID)).ToList();
-            MenuViewModel mvm = new MenuViewModel();
+            MenuNavViewModel mvm = new MenuNavViewModel();
             mvm.ParentId = Guid.Empty;
             mvm.Name = " 首页";
             mvm.ID = Guid.Empty;
@@ -61,11 +61,11 @@ namespace DLiteAuthFrame.APP.APP
             return mvm;         
         }
 
-        private void RecursionMenu(Guid ParentID,List<Menu> menu,MenuViewModel _mvm)
+        private void RecursionMenu(Guid ParentID,List<Menu> menu,MenuNavViewModel _mvm)
         {            
             foreach (var item in menu.Where(t => t.ParentMenuCode == ParentID))
             {
-                MenuViewModel mvm = new MenuViewModel();
+                MenuNavViewModel mvm = new MenuNavViewModel();
                 mvm.ID = item.MenuCode;
                 mvm.Name = item.MenuName;
                 mvm.ParentId = item.ParentMenuCode;
