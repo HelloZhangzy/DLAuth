@@ -39,13 +39,26 @@ namespace DLiteAuthFrame.Web
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork));
             builder.RegisterType(typeof(UserService)).As(typeof(IUserService));
-            builder.RegisterType(typeof(AuthApp)).As(typeof(IAuthApp));
+
             builder.RegisterType(typeof(UserRepository)).As(typeof(IUserRepository));
-            builder.RegisterType(typeof(OrgRository)).As(typeof(IOrgRository));
+            builder.RegisterType(typeof(OrgRepository)).As(typeof(IOrgRepository));
+
+            builder.RegisterType(typeof(MenuRepository)).As(typeof(IMenuRepository));
+            builder.RegisterType(typeof(RoleRepository)).As(typeof(IRoleRepository));
+
+            builder.RegisterType(typeof(AuthManageApp)).As(typeof(IAuthManageApp)).PropertiesAutowired();
+            builder.RegisterType(typeof(OrgManageApp)).As(typeof(IOrgManageApp)).PropertiesAutowired();
+            builder.RegisterType(typeof(UserManageApp)).As(typeof(IUserManageApp)).PropertiesAutowired();
+
+            builder.RegisterType(typeof(RoleManageApp)).As(typeof(IRoleManageApp)).PropertiesAutowired();
+            builder.RegisterType(typeof(MenuManageApp)).As(typeof(IMenuManageApp)).PropertiesAutowired();
+
 
             // 注册controller，使用属性注入
-            builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired();
+
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).AsImplementedInterfaces();
+
             builder.RegisterModelBinders(Assembly.GetExecutingAssembly());
             builder.RegisterModelBinderProvider();
 
@@ -56,14 +69,14 @@ namespace DLiteAuthFrame.Web
             //builder.RegisterSource(new ViewRegistrationSource());
 
             // 注册所有的Attribute
-            builder.RegisterFilterProvider();         
+            builder.RegisterFilterProvider();
             
 
             // Set the dependency resolver to be Autofac.
             _container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(_container));
 
-            AutofacExt.InitAutofac(_container);
+            //AutofacExt.InitAutofac(_container);
         }
 
 

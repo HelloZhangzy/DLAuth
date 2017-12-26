@@ -77,7 +77,9 @@ $.download = function (url, data, method) {
         $('<form action="' + url + '" method="' + (method || 'post') + '">' + inputs + '</form>').appendTo('body').submit().remove();
     };
 };
+
 $.modalOpen = function (options) {
+
     var defaults = {
         id: null,
         title: '系统窗口',
@@ -89,9 +91,13 @@ $.modalOpen = function (options) {
         btnclass: ['btn btn-primary', 'btn btn-danger'],
         callBack: null
     };
+
     var options = $.extend(defaults, options);
+
     var _width = top.$(window).width() > parseInt(options.width.replace('px', '')) ? options.width : top.$(window).width() + 'px';
+
     var _height = top.$(window).height() > parseInt(options.height.replace('px', '')) ? options.height : top.$(window).height() + 'px';
+
     top.layer.open({
         id: options.id,
         type: 2,
@@ -107,7 +113,8 @@ $.modalOpen = function (options) {
         }, cancel: function () {
             return true;
         }
-    });
+    }
+    );
 }
 $.modalConfirm = function (content, callBack) {
     top.layer.confirm(content, {
@@ -179,7 +186,9 @@ $.submitForm = function (options) {
         close: true
     };
     var options = $.extend(defaults, options);
+
     $.loading(true, options.loading);
+
     window.setTimeout(function () {
         if ($('[name=__RequestVerificationToken]').length > 0) {
             options.param["__RequestVerificationToken"] = $('[name=__RequestVerificationToken]').val();

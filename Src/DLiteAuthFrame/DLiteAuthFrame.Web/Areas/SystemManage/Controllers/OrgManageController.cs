@@ -1,7 +1,10 @@
-﻿using DLiteAuthFrame.APP.ViewModel;
+﻿using DLiteAuthFrame.APP.APP;
+using DLiteAuthFrame.APP.IApp;
+using DLiteAuthFrame.APP.ViewModel;
 using DLiteAuthFrame.Base.Cookis_Session;
 using DLiteAuthFrame.Common;
 using DLiteAuthFrame.Domain.IRepository;
+using DLiteAuthFrame.Domain.IServices.IAuthservices;
 using DLiteAuthFrame.Domain.Model;
 using DLiteAuthFrame.Web.App_Start.Attribute;
 using System;
@@ -14,73 +17,73 @@ namespace DLiteAuthFrame.Web.Areas.SystemManage.Controllers
 {
     public class OrgManageController : Controller
     {
-        IOrgRository org = null;
-        public OrgManageController(IOrgRository _org)
-        {
-            org = _org;
-        }
+        public IOrgManageApp orgApp { get; set; }
 
         // GET: SystemManage/Org
         [AuthAttribute]
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
+        [HttpGet]
         public ActionResult GetOrgs()
         {
-            var UserID = DLSession.GetCurrLoginCode();
+            List<OrgViewModel> data = orgApp.GetOrgTree();
+            string ret_s = "{\"rows\": " + data.ToJson() + "}";
+            return Content(ret_s);
+        }               
 
-            if (string.IsNullOrWhiteSpace(UserID)) return null;
-
-            var data = org.GetOrgs(Guid.Parse(UserID));
-
-            return Content(ToViewModel(data).ToJson());
+        [HttpPost]
+        public ActionResult GetOrg(Guid ID)
+        {
+            return Content(orgApp.GetOrgInfo(ID).ToJson());
         }
 
         [HttpPost]
-        public ActionResult GetOrg(string ID)
+        public ActionResult AddOrUpdateOrg(OrgViewModel ov)
         {
-            var item = org.Filter(t => t.OrgCode.ToString() == ID).FirstOrDefault();
-            if (item != null)
+            if (ov != null)
             {
-                OrgViewModel ov = new OrgViewModel();
-                ov.CreaterDate = item.CreaterDate;
-                ov.CreateUserCode = item.CreateUserCode;
-                ov.OrgCode = item.OrgCode;
-                ov.OrgExplain = item.OrgExplain;
-                ov.OrgName = item.OrgName;
-                ov.ParentCode = item.ParentCode;
-                ov.UpdateDate = item.UpdateDate;
-                ov.UpdateUserCode = item.UpdateUserCode;
-                return Content(ov.ToJson());
+                if (ov.OrgCode == Guid.Empty)
+                    return Content(orgApp.Add(ov).ToJson());
+                else
+                    return Content(orgApp.Update(ov).ToJson());
             }
-            return null;            
+            return Content(new AjaxResult { state = ResultType.error.ToString(), message = "数据填写不完整！", data = null }.ToJson());
         }
 
-        private List<OrgViewModel> ToViewModel(IQueryable<Organization> orgs)
+        public ActionResult DeleteOrg(Guid ID)
         {
-            List<OrgViewModel> ovm = new List<OrgViewModel>();
-
-            foreach (var item in orgs)
-            {
-                OrgViewModel ov = new OrgViewModel();
-                ov.CreaterDate = item.CreaterDate;
-                ov.CreateUserCode = item.CreateUserCode;
-                ov.OrgCode = item.OrgCode;
-                ov.OrgExplain = item.OrgExplain;
-                ov.OrgName = item.OrgName;
-                ov.ParentCode = item.ParentCode;
-                ov.UpdateDate = item.UpdateDate;
-                ov.UpdateUserCode = item.UpdateUserCode;
-                ovm.Add(ov);
-            }
-            return ovm;
+            return Content(orgApp.Delete(ID).ToJson());
         }
-
+                 
         [AuthAttribute]
-        public ActionResult Edit()
-        {           
+        public ActionResult Edit(string id)
+        {
+            Guid ID = Guid.Parse(id);
+
+            var ls = orgApp.GetOrgSelect(ID);
+
+            if (!(ID==Guid.Empty))
+            {
+                var org = orgApp.GetOrgInfo(ID);
+
+                ls.Where(t => t.Value == org.ParentCode.ToString()).FirstOrDefault().Selected = true;
+
+                var temp = ls.Where(t => t.Value == ID.ToString()).FirstOrDefault();
+
+                if (temp != null)
+                {
+                    temp.Disabled = false;
+                }
+
+                ViewData["OrgViewModel"] = org;
+            }
+            else ViewData["OrgViewModel"] = new OrgViewModel();            
+
+            ViewData["OrgList"] = new SelectList(ls, "Value", "Text");
             return View();
         }
     }

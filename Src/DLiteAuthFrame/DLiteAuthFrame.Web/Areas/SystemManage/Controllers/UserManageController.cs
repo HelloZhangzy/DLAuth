@@ -1,4 +1,5 @@
-﻿using DLiteAuthFrame.APP.IApp;
+﻿using DLiteAuthFrame.APP.APP;
+using DLiteAuthFrame.APP.IApp;
 using DLiteAuthFrame.APP.ViewModel;
 using DLiteAuthFrame.Base.Cookis_Session;
 using DLiteAuthFrame.Common;
@@ -16,14 +17,11 @@ namespace DLiteAuthFrame.Web.Areas.SystemManage.Controllers
 {
     public class UserManageController : Controller
     {
-        private IUserRepository _user = null;
+        public IUserRepository _user { get; set; }
 
-        public UserManageController(IUserRepository user)
-        {
-            _user =user;
-        }
-
-        // GET: SystemManage/UserManage
+        public IUserManageApp userApp { get;set; }
+        public IOrgManageApp orgApp { get; set; }
+                
         [AuthAttribute]
         public ActionResult Index()
         {
@@ -63,6 +61,89 @@ namespace DLiteAuthFrame.Web.Areas.SystemManage.Controllers
             }
         }
 
+        [HttpGet]
+        public  ActionResult GetOrgUsers(string OrgID)
+        {
+            if (string.IsNullOrWhiteSpace(OrgID)) return Content("");
+            
+            var retData = userApp.GetOrgUsers(Guid.Parse(OrgID));
+            if (retData == null) return Content("");
+            
+            return Content(retData.ToJson());
+        }
 
+        [AuthAttribute]
+        [HttpPost]
+        public ActionResult UpdateState(string ID)
+        {
+            if (string.IsNullOrWhiteSpace(ID)) return  Content(ResultModel.error("请选择……").ToJson());
+            return Content(userApp.UpdateState(Guid.Parse(ID)).ToJson());
+        }
+
+        [AuthAttribute]
+        [HttpGet]
+        public ActionResult PassWord(string ID)
+        {
+            ViewData["ID"] = ID;
+            return View();
+        }
+
+        [AuthAttribute]
+        [HttpGet]
+        public ActionResult Edit(string ID)
+        {
+           
+            var user=new UserViewModel();
+
+            var ls = orgApp.GetOrgSelect(Guid.Empty);
+
+            if (string.IsNullOrEmpty(ID))
+            {
+                user = userApp.GetUserInfo(Guid.Parse(ID));
+                ls.Where(t => t.Value == user.ToString()).FirstOrDefault().Selected = true;
+            }
+            ViewData["UserInfo"] = user;
+            ViewData["OrgList"] = ls;
+            return View();
+        }
+
+        public ActionResult AddOrUpdateUserInfo(UserViewModel info)
+        {
+            if (info.UserCode == null)
+            {
+                return Content(userApp.AddUser(info).ToJson());
+            }
+            else
+                return Content(userApp.UpdateUserInfo(info).ToJson());
+        }
+
+        
+
+        [AuthAttribute]
+        [HttpPost]
+        public ActionResult ResetPassWord(string ID,string PassWord,string ConfirmPassWord)
+        {
+            if (!PassWord.Equals(ConfirmPassWord)) return Content(ResultModel.error("两次密码不一致").ToJson());
+
+            return Content(userApp.ResetPassWord(Guid.Parse(ID), PassWord).ToJson());
+        }
+
+        [AuthAttribute]
+        [HttpPost]
+        public ActionResult UpdatePassWord(string ID, string OldPassWord,string PassWord, string ConfirmPassWord)
+        {
+            if (!PassWord.Equals(ConfirmPassWord)) return Content(ResultModel.error("两次密码不一致").ToJson());
+
+            return Content(userApp.UpdatePassWord(Guid.Parse(ID), OldPassWord, PassWord).ToJson());
+        }
+
+        [AuthAttribute]
+        [HttpPost]
+        public ActionResult UpdateInfo(UserViewModel user)
+        {
+            if (user==null || user.UserCode==null) return Content(ResultModel.error("数据错误").ToJson());
+
+            return Content(userApp.UpdateUserInfo(user).ToJson());
+        }
     }
 }

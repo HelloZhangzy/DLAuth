@@ -18,6 +18,7 @@ namespace DLiteAuthFrame.Domain.Model
         public string MenuName { get; set; }
         public string MenuExplain { get; set; }
         public string Url { get; set; }
+        public string Ico { get; set; }
         public bool IsVisible { get; set; }
         public bool IsEnable { get; set; }
         public Guid CreateUserCode { get; set; }

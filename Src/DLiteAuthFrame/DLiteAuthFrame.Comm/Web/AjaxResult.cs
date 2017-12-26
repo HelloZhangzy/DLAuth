@@ -26,6 +26,7 @@ namespace DLiteAuthFrame.Common
         /// </summary>
         public object data { get; set; }
     }
+
     /// <summary>
     /// 表示 ajax 操作结果类型的枚举
     /// </summary>

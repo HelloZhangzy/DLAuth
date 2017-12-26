@@ -14,6 +14,6 @@ namespace DLiteAuthFrame.Domain.IRepository
 
         void Rollback();
 
-        IRepository<T> GetRepository<T>() where T : class;
+        //IRepository<T> GetRepository<T>() where T : class;
     }
 }

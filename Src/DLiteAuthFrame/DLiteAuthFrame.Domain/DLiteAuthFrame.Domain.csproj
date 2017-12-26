@@ -40,14 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IRepository\IOrgRository.cs" />
-    <Compile Include="IRepository\IUserRository.cs" />
+    <Compile Include="IRepository\IMenuRepository.cs" />
+    <Compile Include="IRepository\IOrgRepository.cs" />
+    <Compile Include="IRepository\IRoleRepository.cs" />
+    <Compile Include="IRepository\IUserRepository.cs" />
     <Compile Include="IRepository\IRepository.cs" />
     <Compile Include="IRepository\IUnitOfWork.cs" />
-    <Compile Include="IServices\IAuthservices\IButtonService.cs" />
-    <Compile Include="IServices\IAuthservices\IMemuService.cs" />
-    <Compile Include="IServices\IAuthservices\IOrgService.cs" />
-    <Compile Include="IServices\IAuthservices\IRoleService.cs" />
     <Compile Include="IServices\IAuthservices\IUserService.cs" />
     <Compile Include="Model\ButtonLibrary.cs" />
     <Compile Include="Model\Code.cs" />
@@ -70,10 +68,6 @@
     <Compile Include="Model\UserRole.cs" />
     <Compile Include="Model\UserSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\AuthServices\ButtonService.cs" />
-    <Compile Include="Services\AuthServices\MemuService.cs" />
-    <Compile Include="Services\AuthServices\OrgService.cs" />
-    <Compile Include="Services\AuthServices\RoleService.cs" />
     <Compile Include="Services\AuthServices\UserService.cs" />
   </ItemGroup>
   <ItemGroup>

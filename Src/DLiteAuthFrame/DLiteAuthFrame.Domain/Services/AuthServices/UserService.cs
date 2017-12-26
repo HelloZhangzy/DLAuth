@@ -39,7 +39,9 @@ namespace DLiteAuthFrame.Domain.Services.AuthServices
 
         public string CheckPassWord(string Name, string PassWord)
         {
-            var Luser=_user.Filter(t => t.LoginCode == Name.Trim() && t.LoginPass == PassWord && t.ibState==true).FirstOrDefault();
+           // var Luser= _user.Find(t => t.LoginCode == Name.Trim() && t.LoginPass == PassWord && t.ibState == true);
+            var temp=_user.Filter(t => t.LoginCode == Name && t.LoginPass == PassWord && t.ibState==true);
+           var  Luser = temp.FirstOrDefault();
 
             if (Luser != null)
             {

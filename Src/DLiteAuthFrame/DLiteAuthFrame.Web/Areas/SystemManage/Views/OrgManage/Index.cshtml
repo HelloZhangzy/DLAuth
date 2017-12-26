@@ -5,57 +5,68 @@
 }
 <script>
     $(function () {
-        LoadOrgs();      
+        LoadOrgs();
     })
     
     function LoadOrgs() {
-        var $gridList = $("#OrgTree");
-        $gridList.dataGrid({
+        var $gridList = $("#gridList");
+        $gridList.jqGrid({
             treeGrid: true,
-            treeGridModel: "adjacency",
+            datatype: "json",           
+            gridview: true,
+            treeGridModel: "adjacency",        
             ExpandColumn: "OrgName",
             url: "/SystemManage/OrgManage/GetOrgs",
-            height: $(window).height() - 96,
+            datatype: "json",
+            loadonce: true,
+            width: $(window).width()+5,
+            height: $(window).height() - 90, 
             colModel: [
-                { label: "主键", name: "OrgCode", index: "", hidden: true, key: true },
-                { label: "上级编号", name: "ParentCode", index: "", hidden: true, key: true },
-                { label: '名称', name: 'OrgName', index: "", width: 200, align: 'left' },
-                { label: '创建时间', name: 'CreaterDate', index: "", width: 160, align: 'left' },
-                { label: '备注', name: 'OrgExplain', index: "", width: 200, align: 'left' },
+                { label: "主键", name: "OrgCode", index: "OrgCode", hidden: true, key: true, align: 'left' },
+                { label: "上级编号", name: "ParentCode", index: "ParentCode", hidden: true, },
+                { label: '名称', name: 'OrgName', index: "OrgName", width: 200, align: 'left' },
+                { label: '创建时间', name: 'CreaterDate', index: "CreaterDate", width: 160, align: 'left', formatter: "date", formatoptions: { srcformat: 'Y-m-d H:i:s', newformat: 'Y-m-d H:i:s' } },
+                { label: '备注', name: 'OrgExplain', index: "OrgExplain", width: 200, align: 'left' }
+                ,
                 {
                     name: '功能',
-                    width: 150,
+                    width: 100,
+                    align: 'left',
                     formatter: function (value, grid, rows, state) {
-                        var rid = rows.id;
-                        return '<input id="Edit" type="button" class="btn btn-success btn-xs" name="Submit" value="编辑"  onclick="Edit(' + rid + ')"/>'
+                        var rid = rows.OrgCode;
+                        var ddd = "Edit('" + rid + "')";
+                        var ccc = "Delete('" + rid + "')";
+                        return '<input id="Edit" type="button" class="btn btn-success btn-xs" name="Submit" value="编辑"  onclick="' + ddd+'"/>'
                             + '&nbsp;&nbsp;'
-                            + '<input id="Delete" type="button" class="btn btn-danger btn-xs" value="删除" onclick="Delete(' + rid + ')"/>';
+                            + '<input id="Delete" type="button" class="btn btn-danger btn-xs" value="删除" onclick="' + ccc+'"/>';
                     }
                 }
             ]
         });
-    };    
+    }; 
 
-    function Delete()
-    {
-        $.modalConfirm("注：您确定要【删除】该机构吗？", function (r) {
-            if (r) {
-
+    function Delete(id) {
+        $.deleteForm({
+            url: "/SystemManage/OrgManage/DeleteOrg",
+            param: { ID: id },
+            success: function () {
+                $.currentWindow().$("#OrgTree").resetSelection();
+                $.currentWindow().$("#OrgTree").trigger("reloadGrid");
             }
-        });
+        });       
     }
-
+    
     function Edit(id)
-    {
-        alert(id);
-        var rowData = $('#OrgTree').jqGrid('getRowData', id);
+    {      
         $.modalOpen({
             id: 'Form',
             title: '修改机构',
-            data: { ID: rowData.ID },
-            url: '/SystemManage/OrgManage/Edit',
+            url: '/SystemManage/OrgManage/Edit?ID=' + id,
             width: '700px',
-            height: '520px'
+            height: '400px',
+            callBack: function (iframeId) {            
+              top.frames[iframeId].submitForm();
+            }
         });
     }
 
@@ -65,51 +76,27 @@
             title: "新增机构",
             url: "/SystemManage/OrgManage/Edit",
             width: "700px",
-            height: "520px"           
+            height: "400px",
+            callBack: function (iframeId) {
+                top.frames[iframeId].submitForm();
+            }          
         });
     }
-
 </script>
+
 <div class="topPanel">
     <div class="toolbar">
         <div class="btn-group">
             <a class="btn btn-primary" onclick="$.reload()"><span class="glyphicon glyphicon-refresh"></span></a>
         </div>
         <div class="btn-group">
-            <a id="NF-add" authorize="yes" class="btn btn-primary dropdown-text" onclick="btn_add()"><i class="fa fa-plus"></i>新建用户</a>
-        </div>
-        @*<div class="operate">
-                <ul class="nav nav-pills">
-                    <li class="first">已选中<span>1</span>项</li>
-                    <li><a id="NF-edit" authorize="yes" onclick="btn_edit()"><i class="fa fa-pencil-square-o"></i>修改用户</a></li>
-                    <li><a id="NF-delete" authorize="yes" onclick="btn_delete()"><i class="fa fa-trash-o"></i>删除用户</a></li>
-                    <li><a id="NF-Details" authorize="yes" onclick="btn_details()"><i class="fa fa-search-plus"></i>查看用户</a></li>
-                    <li class="split"></li>
-                    <li><a id="NF-revisepassword" authorize="yes" onclick="btn_revisepassword()"><i class="fa fa-key"></i>密码重置</a></li>
-                    <li class="split"></li>
-                    <li><a id="NF-disabled" authorize="yes" onclick="btn_disabled()"><i class="fa fa-stop-circle"></i>禁用</a></li>
-                    <li><a id="NF-enabled" authorize="yes" onclick="btn_enabled()"><i class="fa fa-play-circle"></i>启用</a></li>
-                </ul>
-                <a href="javascript:;" class="close"></a>
-            </div>*@
-    </div>
-    @*<div class="search">
-            <table>
-                <tr>
-                    <td>
-                        <div class="input-group">
-                            <input id="txt_keyword" type="text" class="form-control" placeholder="账户/姓名/手机" style="width: 200px;">
-                            <span class="input-group-btn">
-                                <button id="btn_search" type="button" class="btn  btn-primary"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>*@
+            <a id="btnAdd" authorize="yes" class="btn btn-primary dropdown-text" onclick="btn_add()"><i class="fa fa-plus"></i>新建机构</a>
+        </div>       
+    </div>    
 </div>
-<div class="gridPanel">  
-    <table id="OrgTree"></table>
+
+<div class="gridPanel">   
+   <table id="gridList"></table>
 </div>
 
 

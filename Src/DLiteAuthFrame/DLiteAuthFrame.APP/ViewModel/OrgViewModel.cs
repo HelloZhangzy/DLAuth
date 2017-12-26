@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DLiteAuthFrame.APP.ViewModel
 {
-    public class OrgViewModel
+    public class OrgViewModel:JQGridViewModel
     {    
         public Guid OrgCode { get; set; }
 
@@ -22,6 +22,6 @@ namespace DLiteAuthFrame.APP.ViewModel
 
         public Guid? UpdateUserCode { get; set; }
 
-        public DateTime? UpdateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }        
     }
 }

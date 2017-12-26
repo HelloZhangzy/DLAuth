@@ -175,6 +175,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\SystemManage\Controllers\MenuManageController.cs" />
     <Compile Include="Areas\SystemManage\Controllers\OrgManageController.cs" />
     <Compile Include="Areas\SystemManage\Controllers\UserManageController.cs" />
     <Compile Include="Areas\SystemManage\SystemManageAreaRegistration.cs" />
@@ -1327,10 +1328,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\iconfont.eot" />
-    <Content Include="fonts\iconfont.svg" />
-    <Content Include="fonts\iconfont.ttf" />
-    <Content Include="fonts\iconfont.woff" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
@@ -1887,6 +1884,10 @@
     <Content Include="Content\js\simditor\css\simditor.scss" />
     <Content Include="Areas\SystemManage\Views\OrgManage\Index.cshtml" />
     <Content Include="Areas\SystemManage\Views\OrgManage\Edit.cshtml" />
+    <Content Include="Areas\SystemManage\Views\UserManage\PassWord.cshtml" />
+    <Content Include="Areas\SystemManage\Views\UserManage\Edit.cshtml" />
+    <Content Include="Areas\SystemManage\Views\MenuManage\Index.cshtml" />
+    <Content Include="Areas\SystemManage\Views\MenuManage\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1908,7 +1909,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
@@ -1920,6 +1923,7 @@
     <Content Include="Views\Shared\_From.cshtml" />
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
     <Content Include="Views\Shared\_Index.cshtml" />
+    <Content Include="Views\Home\Index3.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -172,9 +172,9 @@ Date add by interval
 */
 Date.prototype.dateAdd = function(interval, number) {
 	switch (interval) {
-	  case "y":
-		return new Date(this.getFullYear() + number, this.getMonth(), this.getDate());
-		break;
+        case "y":
+            return new Date(this.getFullYear() + number, this.getMonth(), this.getDate());
+            break;
 	  case "m":
 		return new Date(this.getFullYear(), this.getMonth() + number, checkDate(this.getFullYear(), this.getMonth() + number, this.getDate()));
 		break;
@@ -190,7 +190,7 @@ Date.prototype.dateAdd = function(interval, number) {
 function checkDate(year, month, date){
 	var enddate = ["31", "28", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31"];
 	var returnDate = "";
-	if (year % 4 == 0) {
+	if (year % 4==0) {
 		enddate[1] = "29";
 	}
 	if (date > enddate[month]) {

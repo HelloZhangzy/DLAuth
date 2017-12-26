@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+<script>
+    $(function () {
+        LoadMenu();
+    });
+
+    function LoadMenu() {
+        var $gridList = $("#MenuList");
+        $gridList.jqGrid({
+            treeGrid: true,
+            datatype: "json",           
+            treeGridModel: "adjacency",          
+            url: "/SystemManage/MenuManage/GetMenus",           
+            ExpandColumn: "MenuName",                
+            width: $(window).width() + 5,
+            height: $(window).height() - 90,
+            colModel: [              
+                { label: "主键", name: "MenuCode", index: "MenuCode", hidden: true, key: true, align: 'left' },                
+                { label: '名称', name: 'MenuName', index: "MenuName", width: 200, align: 'left' },
+                { label: 'URL', name: 'Url', index: "Url", width: 200, align: 'left' },
+                { label: 'ICO', name: 'Ico', index: "Ico", width: 200, align: 'left' },
+                { label: '备注', name: 'MenuExplain', index: "MenuExplain", width: 200, align: 'left' },
+                {
+                    label: "状态", name: "IsEnable", width: 60, align: "center",
+                    formatter: function (cellvalue) {
+                        return cellvalue == true ? "<i class=\"fa fa-toggle-on\"></i>" : "<i class=\"fa fa-toggle-off\"></i>";
+                    }
+                },
+                { label: '创建时间', name: 'CreaterDate', index: "CreaterDate", width: 160, align: 'left', formatter: "date", formatoptions: { srcformat: 'Y-m-d H:i:s', newformat: 'Y-m-d H:i:s' } },
+                {
+                    name: '功能',
+                    width: 100,
+                    align: 'left',
+                    formatter: function (value, grid, rows, state) {
+                        var rid = rows.MenuCode;
+                        var ddd = "Edit('" + rid + "')";
+                        var ccc = "Delete('" + rid + "')";
+                        return '<input id="Edit" type="button" class="btn btn-success btn-xs" name="Submit" value="编辑"  onclick="' + ddd + '"/>'
+                            + '&nbsp;&nbsp;'
+                            + '<input id="Delete" type="button" class="btn btn-danger btn-xs" value="删除" onclick="' + ccc + '"/>';
+                    }
+                }
+            ]
+        });
+    }; 
+</script>
+
+<div class="topPanel">
+    <div class="toolbar">
+        <div class="btn-group">
+            <a class="btn btn-primary" onclick="$.reload()"><span class="glyphicon glyphicon-refresh"></span></a>
+        </div>
+        <div class="btn-group">
+            <a id="btnAdd" class="btn btn-primary dropdown-text" onclick="btn_add()"><i class="fa fa-plus"></i>新建菜单</a>
+        </div>
+    </div>
+</div>
+
+<div class="bodyPanel">
+    <table id="MenuList"></table>
+  @*<table>
+    <tr>            
+        <td style="width:100%;">
+            
+        </td>
+    </tr>
+   </table>*@
+</div>

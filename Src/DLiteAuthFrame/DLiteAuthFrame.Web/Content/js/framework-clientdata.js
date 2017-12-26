@@ -27,7 +27,7 @@ $.clientsInit = function () {
     //            dataJson.authorizeButton = data.authorizeButton;
     //        }
     //    });
-    }
+  //  }
     init();
     return dataJson;
 }
