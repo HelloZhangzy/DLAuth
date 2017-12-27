@@ -35,6 +35,7 @@
                         if (res.state == "success") {                            
                             layui.layer.msg(res.message);                           
                             setTimeout(function () { window.location.href = res.Url; }, 300);
+
                         } else {                          
                             layui.layer.msg(res.message); 
                         }

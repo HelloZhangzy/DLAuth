@@ -76,7 +76,7 @@ namespace DLiteAuthFrame.Web
             _container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(_container));
 
-            AutofacExt.InitAutofac(_container);
+            //AutofacExt.InitAutofac(_container);
         }
 
 

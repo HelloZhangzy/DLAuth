@@ -1,15 +1,9 @@
-﻿using Autofac;
+﻿//using Autofac;
 using DLiteAuthFrame.Base.AutoFac;
-using DLiteAuthFrame.Base.Model;
 using DLiteAuthFrame.Domain.IRepository;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DLiteAuthFrame.Domain.IRepository;
+
+
 
 namespace DLiteAuthFrame.Base.Repository
 {
@@ -50,14 +44,14 @@ namespace DLiteAuthFrame.Base.Repository
             _dbTransaction.Rollback();
         }
 
-        public IRepository<T> GetRepository<T>() where T : class
-        {
-            var typeName = typeof(T).Name;
+        //public IRepository<T> GetRepository<T>() where T : class
+        //{
+        //    var typeName = typeof(T).Name;
             
-            var repositoryInstance =AutofacExt.Resolve<IRepository<T>>(new NamedParameter("context", _dbContext));
+        //    var repositoryInstance =AutofacExt.Resolve<IRepository<T>>(new NamedParameter("context", _dbContext));
 
-            return repositoryInstance;
-        }
+        //    return repositoryInstance;
+        //}
             
     }
 }
