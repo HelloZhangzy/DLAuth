@@ -19,12 +19,21 @@ namespace DLiteAuthFrame.Base.Repository
 
         public IQueryable<Organization> GetOrgs(Guid UserID)
         {
-            return Context.Set<Organization>();
-            //return from a in Context.Set<OrgUser>()
-            //       from b in Context.Set<Organization>()
-            //       where a.UserCode == UserID && a.OrgCode==b.OrgCode || a.OrgCode==b.ParentCode
-            //      select b;
+            //return Context.Set<Organization>();
+            return from a in Context.Set<OrgUser>()
+                   from b in Context.Set<Organization>()
+                   where a.UserCode == UserID && (a.OrgCode == b.OrgCode || a.OrgCode == b.ParentCode)
+                   select b;
         }
+
+
+        public IQueryable<Organization> GetOrgNode(Guid OrgID)
+        {
+
+            return Context.Set<Organization>().Where(t => t.OrgCode == OrgID || t.ParentCode == OrgID);
+        }
+            
+
 
         public bool DeleteOrg(Guid ID, ref string Msg)
         {

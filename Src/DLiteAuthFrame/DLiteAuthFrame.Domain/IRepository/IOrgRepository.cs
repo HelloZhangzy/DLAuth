@@ -10,7 +10,7 @@ namespace DLiteAuthFrame.Domain.IRepository
     public interface IOrgRepository : IRepository<Organization>
     {
         /// <summary>
-        /// 根据用户编号获取组织机构
+        /// 根据用户编号获取二级组织机构信息
         /// </summary>
         /// <param name="UserID"></param>
         /// <returns></returns>

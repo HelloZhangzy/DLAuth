@@ -71,7 +71,7 @@ AmCharts.exportDrawingMenu = [ {
 AmCharts.exportCFG = {
   enabled: true,
   libs: {
-    path: "../libs/"
+    path: "~/libs/"
   },
   menu: [ {
     class: "export-main",

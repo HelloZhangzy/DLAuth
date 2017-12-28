@@ -124,8 +124,7 @@ var Login = function () {
             }
         });
     }
-   
-    
+       
 
     return {       
         init: function () {   

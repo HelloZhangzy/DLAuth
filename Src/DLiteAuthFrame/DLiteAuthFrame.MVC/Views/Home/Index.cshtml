@@ -4,7 +4,7 @@
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_layout.cshtml";
 }
-
+<body class="page-sidebar-closed-hide-logo page-container-bg-solid page-header-fixed page-sidebar-fixed page-footer-fixed">
     <!-- BEGIN HEADER -->
     <div class="page-header navbar navbar-fixed-top">
         <!-- BEGIN HEADER INNER -->
@@ -18,128 +18,133 @@
                     <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
                 </div>
             </div>
-            <!-- END LOGO -->                  
+            <!-- END LOGO -->
             <!-- BEGIN PAGE TOP -->
-            <div class="page-top">                   
+            <div class="page-top">
                 <!-- BEGIN TOP NAVIGATION MENU -->
-                <div class="top-menu">                    
-                        <ul class="nav navbar-nav pull-right">
-                            <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
-                                <div class="theme-panel">
-                                    <div class="toggler tooltips" data-container="body" data-placement="left" data-html="true" data-original-title="Click to open advance theme customizer panel">
-                                        <i class="icon-settings"></i>
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
+                            <div class="theme-panel">
+                                <div class="toggler tooltips" data-container="body" data-placement="left" data-html="true" data-original-title="Click to open advance theme customizer panel">
+                                    <i class="icon-settings"></i>
+                                </div>
+                                <div class="toggler-close">
+                                    <i class="icon-close"></i>
+                                </div>
+                                <div class="theme-options">
+                                    <div class="theme-option theme-colors clearfix">
+                                        <span> THEME COLOR </span>
+                                        <ul>
+                                            <li class="color-default current tooltips" data-style="default" data-container="body" data-original-title="Default"> </li>
+                                            <li class="color-grey tooltips" data-style="grey" data-container="body" data-original-title="Grey"> </li>
+                                            <li class="color-blue tooltips" data-style="blue" data-container="body" data-original-title="Blue"> </li>
+                                            <li class="color-dark tooltips" data-style="dark" data-container="body" data-original-title="Dark"> </li>
+                                            <li class="color-light tooltips" data-style="light" data-container="body" data-original-title="Light"> </li>
+                                        </ul>
                                     </div>
-                                    <div class="toggler-close">
-                                        <i class="icon-close"></i>
+                                    <div class="theme-option">
+                                        <span> Theme Style </span>
+                                        <select class="layout-style-option form-control input-small">
+                                            <option value="square" selected="selected">Square corners</option>
+                                            <option value="rounded">Rounded corners</option>
+                                        </select>
                                     </div>
-                                    <div class="theme-options">
-                                        <div class="theme-option theme-colors clearfix">
-                                            <span> THEME COLOR </span>
-                                            <ul>
-                                                <li class="color-default current tooltips" data-style="default" data-container="body" data-original-title="Default"> </li>
-                                                <li class="color-grey tooltips" data-style="grey" data-container="body" data-original-title="Grey"> </li>
-                                                <li class="color-blue tooltips" data-style="blue" data-container="body" data-original-title="Blue"> </li>
-                                                <li class="color-dark tooltips" data-style="dark" data-container="body" data-original-title="Dark"> </li>
-                                                <li class="color-light tooltips" data-style="light" data-container="body" data-original-title="Light"> </li>
-                                            </ul>
-                                        </div>
-                                        <div class="theme-option">
-                                            <span> Theme Style </span>
-                                            <select class="layout-style-option form-control input-small">
-                                                <option value="square" selected="selected">Square corners</option>
-                                                <option value="rounded">Rounded corners</option>
-                                            </select>
-                                        </div>
-                                        <div class="theme-option">
-                                            <span> Layout </span>
-                                            <select class="layout-option form-control input-small">
-                                                <option value="fluid" selected="selected">Fluid</option>
-                                                <option value="boxed">Boxed</option>
-                                            </select>
-                                        </div>
-                                        <div class="theme-option">
-                                            <span> Header </span>
-                                            <select class="page-header-option form-control input-small">
-                                                <option value="fixed" selected="selected">Fixed</option>
-                                                <option value="default">Default</option>
-                                            </select>
-                                        </div>
-                                        <div class="theme-option">
-                                            <span> Top Dropdown</span>
-                                            <select class="page-header-top-dropdown-style-option form-control input-small">
-                                                <option value="light" selected="selected">Light</option>
-                                                <option value="dark">Dark</option>
-                                            </select>
-                                        </div>
-                                        <div class="theme-option">
-                                            <span> Sidebar Mode</span>
-                                            <select class="sidebar-option form-control input-small">
-                                                <option value="fixed">Fixed</option>
-                                                <option value="default" selected="selected">Default</option>
-                                            </select>
-                                        </div>
-                                        <div class="theme-option">
-                                            <span> Sidebar Style</span>
-                                            <select class="sidebar-style-option form-control input-small">
-                                                <option value="default" selected="selected">Default</option>
-                                                <option value="compact">Compact</option>
-                                            </select>
-                                        </div>
-                                        <div class="theme-option">
-                                            <span> Sidebar Menu </span>
-                                            <select class="sidebar-menu-option form-control input-small">
-                                                <option value="accordion" selected="selected">Accordion</option>
-                                                <option value="hover">Hover</option>
-                                            </select>
-                                        </div>
-                                        <div class="theme-option">
-                                            <span> Sidebar Position </span>
-                                            <select class="sidebar-pos-option form-control input-small">
-                                                <option value="left" selected="selected">Left</option>
-                                                <option value="right">Right</option>
-                                            </select>
-                                        </div>
-                                        <div class="theme-option">
-                                            <span> Footer </span>
-                                            <select class="page-footer-option form-control input-small">
-                                                <option value="fixed">Fixed</option>
-                                                <option value="default" selected="selected">Default</option>
-                                            </select>
-                                        </div>
+                                    <div class="theme-option">
+                                        <span> Layout </span>
+                                        <select class="layout-option form-control input-small">
+                                            <option value="fluid" selected="selected">Fluid</option>
+                                            <option value="boxed">Boxed</option>
+                                        </select>
+                                    </div>
+                                    <div class="theme-option">
+                                        <span> Header </span>
+                                        <select class="page-header-option form-control input-small">
+                                            <option value="fixed" selected="selected">Fixed</option>
+                                            <option value="default">Default</option>
+                                        </select>
+                                    </div>
+                                    <div class="theme-option">
+                                        <span> Top Dropdown</span>
+                                        <select class="page-header-top-dropdown-style-option form-control input-small">
+                                            <option value="light" selected="selected">Light</option>
+                                            <option value="dark">Dark</option>
+                                        </select>
+                                    </div>
+                                    <div class="theme-option">
+                                        <span> Sidebar Mode</span>
+                                        <select class="sidebar-option form-control input-small">
+                                            <option value="fixed">Fixed</option>
+                                            <option value="default" selected="selected">Default</option>
+                                        </select>
+                                    </div>
+                                    <div class="theme-option">
+                                        <span> Sidebar Style</span>
+                                        <select class="sidebar-style-option form-control input-small">
+                                            <option value="default" selected="selected">Default</option>
+                                            <option value="compact">Compact</option>
+                                        </select>
+                                    </div>
+                                    <div class="theme-option">
+                                        <span> Sidebar Menu </span>
+                                        <select class="sidebar-menu-option form-control input-small">
+                                            <option value="accordion" selected="selected">Accordion</option>
+                                            <option value="hover">Hover</option>
+                                        </select>
+                                    </div>
+                                    <div class="theme-option">
+                                        <span> Sidebar Position </span>
+                                        <select class="sidebar-pos-option form-control input-small">
+                                            <option value="left" selected="selected">Left</option>
+                                            <option value="right">Right</option>
+                                        </select>
+                                    </div>
+                                    <div class="theme-option">
+                                        <span> Footer </span>
+                                        <select class="page-footer-option form-control input-small">
+                                            <option value="fixed">Fixed</option>
+                                            <option value="default" selected="selected">Default</option>
+                                        </select>
                                     </div>
                                 </div>
-                            </li>                           
-                            <!-- BEGIN USER LOGIN DROPDOWN -->
-                            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                            <li class="dropdown dropdown-user">
-                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <img alt="" class="img-circle" src="../assets/layouts/layout2/img/avatar3_small.jpg" />
-                                    <span class="username username-hide-on-mobile"> @ViewData["UserName"] </span>
-                                    <i class="fa fa-angle-down"></i>
-                                </a>
+                            </div>
+                        </li>
+                        <!-- BEGIN USER LOGIN DROPDOWN -->
+                        <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                        <li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <img alt="" class="img-circle" src="../assets/layouts/layout2/img/avatar3_small.jpg" />
+                                <span class="username username-hide-on-mobile"> @ViewData["UserName"] </span>
+                                <i class="fa fa-angle-down"></i>
+                            </a>
 
-                                <ul class="dropdown-menu dropdown-menu-default">
-                                    <li>
-                                        <a href="page_user_lock_1.html">
-                                            <i class="icon-lock"></i> 锁定
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="page_user_login_1.html">
-                                            <i class="icon-key"></i> 退出
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-</div>           
-                
-              <!-- END TOP NAVIGATION MENU -->
-                </div>                
+                            <ul class="dropdown-menu dropdown-menu-default">
+                                <li>
+                                    <a href="page_user_lock_1.html">
+                                        <i class="icon-lock"></i> 锁定
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="page_user_login_1.html">
+                                        <i class="icon-key"></i> 退出
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- END TOP NAVIGATION MENU -->
+            </div>
             <!-- END PAGE TOP -->
         </div>
         <!-- END HEADER INNER -->
     </div>
+   
+    <!-- BEGIN HEADER & CONTENT DIVIDER -->
+    <div class="clearfix"> </div>
+    <!-- END HEADER & CONTENT DIVIDER -->
+
     <div class="page-container">
         <!-- BEGIN SIDEBAR -->
         <div class="page-sidebar-wrapper">
@@ -147,56 +152,63 @@
             <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
             <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
             <div class="page-sidebar navbar-collapse collapse">
-                <!-- BEGIN SIDEBAR MENU -->                
-                <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                    <li class="nav-item start active open">
-                        <a href="/Home/Index" class="nav-link " target="sysMain">
-                            <i class="icon-home"></i>
-                            <span class="title">首页</span>
-                            <span class="selected"></span>
-                        </a>
-                    </li>
-                    @helper DisplayList(List<MenuNavViewModel> model)
-                    {
+                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: auto;">
+                    <!-- BEGIN SIDEBAR MENU -->
+                    <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+                    <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+                    <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+                    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                    <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+                    <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                    <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-compact" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" data-height="883" data-initialized="1" style="overflow: hidden; width: auto; height: 883px;">
+                        <li class="nav-item start active open">
+                            <a href="/Home/Main" class="nav-link " target="sysMain">
+                                <i class="icon-home"></i>
+                                <span class="title">首页</span>
+                                <span class="selected"></span>
+                            </a>
+                        </li>
+                        @helper DisplayList(List<MenuNavViewModel> model)
+                        {
                             if (model.Count > 0)
                             {
                                 foreach (var item in model)
                                 {
                                     if (@item.Node.Count > 0)
                                     {
-                                        <li class="nav-item  ">
-                                            @*<a href="#" class="dropdown-toggle"><i class="icon-diamond"> </i><span>@item.Name</span><i class="fa fa-angle-right drop-icon"></i></a>*@
-                                            <a href="javascript:;" class="nav-link nav-toggle">
-                                                <i class="icon-diamond"></i>
-                                                <span class="title">@item.Name</span>
-                                                <span class="arrow"></span>
-                                            </a>
-                                            <ul class="sub-menu">
-                                                <li class="nav-item  ">
-                                                    @DisplayList(item.Node)
-                                                </li>
-                                            </ul>
-                                        </li>
+                                                                        <li class="nav-item  ">
+                                                                            @*<a href="#" class="dropdown-toggle"><i class="icon-diamond"> </i><span>@item.Name</span><i class="fa fa-angle-right drop-icon"></i></a>*@
+                                                                            <a href="javascript:;" class="nav-link nav-toggle">
+                                                                                <i class="icon-diamond"></i>
+                                                                                <span class="title">@item.Name</span>
+                                                                                <span class="arrow"></span>
+                                                                            </a>
+                                                                            <ul class="sub-menu">
+                                                                                <li class="nav-item  ">
+                                                                                    @DisplayList(item.Node)
+                                                                                </li>
+                                                                            </ul>
+                                                                        </li>
                                     }
                                     else
                                     {
-                                        <a href=@item.URL class="nav-link "  target="sysMain">
-                                            <span class="title">@item.Name</span>
-                                        </a>
+                                                                        <a href=@item.URL class="nav-link " target="LoadPage">
+                                                                            <span class="title">@item.Name</span>
+                                                                        </a>
+                                        }
                                     }
                                 }
                             }
-                        }
 
-                    @DisplayList((ViewData["MenuViewModel"] as DLiteAuthFrame.APP.ViewModel.MenuNavViewModel).Node)
+                        @DisplayList((ViewData["MenuViewModel"] as DLiteAuthFrame.APP.ViewModel.MenuNavViewModel).Node)
 
-                </ul>
+                    </ul>
+                </div>
                 <!-- END SIDEBAR MENU -->
             </div>
             <!-- END SIDEBAR -->
         </div>
         <!-- END SIDEBAR -->
-
         <!-- BEGIN CONTENT -->
         <div class="page-content-wrapper">
             <!-- BEGIN CONTENT BODY -->
@@ -206,7 +218,7 @@
                     <ul class="page-breadcrumb">
                         <li>
                             <i class="icon-home"></i>
-                            <a href="Home/Index" target="sysMain">Home</a>
+                            <a href="/Home/Main" target="LoadPage">Home</a>
                             <i class="fa fa-angle-right"></i>
                         </li>
                         <li>
@@ -214,34 +226,25 @@
                         </li>
                     </ul>
                 </div>
-                <div class="row">
-                    <iframe src="/Home/Main" id="sysMain" onLoad="iFrameHeight()" name="sysMain" scrolling="auto"></iframe>
-                </div>
-                <!-- END PAGE HEADER-->               
-                
-
-            </div>
-            <!-- END CONTENT BODY -->
+                <!-- END PAGE HEADER-->              
+               <iframe class="page-load" src="/Home/Main" id="LoadPage" scrolling="no" name="LoadPage" frameborder="0" width="100%" height="79.9%"></iframe>              
+                <!-- END CONTENT BODY -->
+            </div>            
+            <!-- END CONTENT -->
         </div>
-
-        <!-- END CONTENT -->      
     </div>
-
-
-
-<div class="page-footer">
-    <div class="page-footer-inner">
-        2016 &copy; DLiteAuthFrame
+    
+    <div class="page-footer">
+        <div class="page-footer-inner">
+            2016 &copy; DLiteAuthFrame
+        </div>
     </div>
-</div>
+</body>
+
 <script type="text/javascript" language="javascript">
-    function iFrameHeight() {
-        var subWeb = document.documentElement.clientHeight;
-        var ifm = document.getElementById("sysMain");
-        if (ifm != null && subWeb != null) {
-            ifm.height = subWeb - 20;
-        }
+    function iFrameHeight() {          
+        var ifm = document.getElementById("LoadPage");        
     }
 </script>
 
-        
+

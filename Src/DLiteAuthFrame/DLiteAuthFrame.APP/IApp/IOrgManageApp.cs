@@ -51,5 +51,19 @@ namespace DLiteAuthFrame.APP.IApp
         /// <returns></returns>
         AjaxResult Delete(Guid ID);
 
+
+        /// <summary>
+        /// 获取当前用户所属机构前1层数据
+        /// </summary>
+        /// <returns></returns>
+        List<JSTreeViewModel> Get_CurrUser_OrgNode();
+
+        /// <summary>
+        /// 获取机构下级节点信息
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        List<JSTreeViewModel> Get_Org_OrgNode(Guid ID);
+
     }
 }

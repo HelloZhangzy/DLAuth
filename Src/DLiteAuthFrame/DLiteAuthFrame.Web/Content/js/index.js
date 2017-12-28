@@ -64,9 +64,11 @@ $(function ($) {
 });
 $(function ($) {
     $("#content-wrapper").find('.mainContent').height($(window).height() - 100);
+
     $(window).resize(function (e) {
         $("#content-wrapper").find('.mainContent').height($(window).height() - 100);
     });
+
     $('#sidebar-nav,#nav-col-submenu').on('click', '.dropdown-toggle', function (e) {
         e.preventDefault();
         var $item = $(this).parent();

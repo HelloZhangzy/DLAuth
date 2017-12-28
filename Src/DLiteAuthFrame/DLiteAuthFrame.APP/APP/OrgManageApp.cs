@@ -16,6 +16,53 @@ namespace DLiteAuthFrame.APP.APP
     {
         public IOrgRepository orgRository { get; set; }
 
+        public List<JSTreeViewModel> Get_CurrUser_OrgNode()
+        {
+            var UserID = DLSession.GetCurrLoginCode();
+            if (string.IsNullOrWhiteSpace(UserID)) return null;
+
+            var data = orgRository.GetOrgs(Guid.Parse(UserID)).ToList();
+            var userorgs = data.GroupBy(t => t.ParentCode).Select(g => (new { ID = g.Key, isChildren = g.Count().ToBool() })).ToList();
+
+            List<JSTreeViewModel> treeModel = new List<JSTreeViewModel>();
+            foreach (var item in userorgs)
+            {
+                var org = data.Find(t => t.OrgCode == item.ID);
+                JSTreeViewModel vm = new JSTreeViewModel();
+                vm.id = item.ID.ToString();
+                vm.children = item.isChildren;
+                vm.parent = org.ParentCode.ToString();
+                vm.text = org.OrgName;                
+                vm.state = JSTreeState.Create(false);
+                treeModel.Add(vm);
+            }
+            return treeModel;
+        }
+
+        public List<JSTreeViewModel> Get_Org_OrgNode(Guid ID)
+        {
+            var data = orgRository.GetOrgs(ID).ToList();
+
+            var orgs = data.GroupBy(t => t.ParentCode).Select(g => (new { ID = g.Key, isChildren = g.Count().ToBool() })).ToList();
+
+            List<JSTreeViewModel> treeModel = new List<JSTreeViewModel>();
+
+            foreach (var item in orgs)
+            {
+                var org = data.Find(t => t.OrgCode == item.ID);
+                JSTreeViewModel vm = new JSTreeViewModel();
+                vm.id = item.ID.ToString();
+                vm.children = item.isChildren;
+                vm.parent = org.ParentCode.ToString();
+                vm.text = org.OrgName;
+                vm.state = JSTreeState.Create(false);
+                treeModel.Add(vm);
+            }
+            return treeModel;
+        }
+        
+
+
         /// <summary>
         /// 获取当前用户可查询的机构
         /// </summary>
@@ -54,7 +101,7 @@ namespace DLiteAuthFrame.APP.APP
             }
             return null;
         }
-
+                 
         /// <summary>
         /// 获取当前用户可查机构SelectListItem
         /// </summary>
@@ -134,7 +181,6 @@ namespace DLiteAuthFrame.APP.APP
             }
         }
 
-
         private List<OrgViewModel> ToTreeViewModel(List<Organization> orgs)
         {
             List<OrgViewModel> Org_ls = new List<OrgViewModel>();
@@ -197,7 +243,6 @@ namespace DLiteAuthFrame.APP.APP
                 }                
             }
         }
-
 
         /// <summary>
         /// 转换为树型
