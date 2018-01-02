@@ -22,42 +22,46 @@ namespace DLiteAuthFrame.APP.APP
             if (string.IsNullOrWhiteSpace(UserID)) return null;
 
             var data = orgRository.GetOrgs(Guid.Parse(UserID)).ToList();
-            var userorgs = data.GroupBy(t => t.ParentCode).Select(g => (new { ID = g.Key, isChildren = g.Count().ToBool() })).ToList();
+            var userorgs = data.GroupBy(t => t.ParentCode).Select(g => (new { ID = g.Key, isChildren = (g.Count()>0) })).ToList();
 
             List<JSTreeViewModel> treeModel = new List<JSTreeViewModel>();
             foreach (var item in userorgs)
             {
-                var org = data.Find(t => t.OrgCode == item.ID);
-                JSTreeViewModel vm = new JSTreeViewModel();
-                vm.id = item.ID.ToString();
-                vm.children = item.isChildren;
-                vm.parent = org.ParentCode.ToString();
-                vm.text = org.OrgName;                
-                vm.state = JSTreeState.Create(false);
-                treeModel.Add(vm);
+                if (item.ID!=Guid.Empty)
+                {
+                    var org = data.Find(t => t.OrgCode == item.ID);
+                    JSTreeViewModel vm = new JSTreeViewModel();
+                    vm.id = item.ID.ToString();
+                    vm.children = item.isChildren;
+                    if (org.ParentCode == Guid.Empty)
+                        vm.parent = "#";
+                    else
+                        vm.parent = org.ParentCode.ToString();
+                    vm.text = org.OrgName;
+                    vm.state = JSTreeState.Create(false);
+                    treeModel.Add(vm);
+                }               
             }
             return treeModel;
         }
 
         public List<JSTreeViewModel> Get_Org_OrgNode(Guid ID)
         {
-            var data = orgRository.GetOrgs(ID).ToList();
-
-            var orgs = data.GroupBy(t => t.ParentCode).Select(g => (new { ID = g.Key, isChildren = g.Count().ToBool() })).ToList();
+            var data = orgRository.GetOrgNode(ID).ToList();
 
             List<JSTreeViewModel> treeModel = new List<JSTreeViewModel>();
-
-            foreach (var item in orgs)
-            {
-                var org = data.Find(t => t.OrgCode == item.ID);
+            
+            foreach (var item2 in data)
+            { 
                 JSTreeViewModel vm = new JSTreeViewModel();
-                vm.id = item.ID.ToString();
-                vm.children = item.isChildren;
-                vm.parent = org.ParentCode.ToString();
-                vm.text = org.OrgName;
+                vm.id = item2.OrgCode.ToString();
+                vm.children = data.Where(t=>t.ParentCode==item2.OrgCode).Count()>0;
+                vm.text = item2.OrgName;
+                vm.parent = item2.ParentCode.ToString();
                 vm.state = JSTreeState.Create(false);
                 treeModel.Add(vm);
             }
+           
             return treeModel;
         }
         

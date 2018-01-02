@@ -14,11 +14,8 @@ namespace DLiteAuthFrame.APP.ViewModel
         public string id { get; set; }
         public string parent { get; set; }
         public string text { get; set; }
-        public string icon { get; set; }
         public bool children { get; set; }
-        public JSTreeState state { get; set; }     
-        public string li_attr { get; set; }
-        public string a_attr { get; set; }        
+        public JSTreeState state { get; set; }
     }
 
     public class JSTreeState
@@ -32,13 +29,4 @@ namespace DLiteAuthFrame.APP.ViewModel
             return new JSTreeState() { opened = _opened, selected = _selected, disabled = _disabled };
         }
     }
-
-    //public static class JSTree
-    //{
-    //    public static string ToJsTree(this List<JSTreeViewModel> data)
-    //    {
-            
-    //    }
-
-    //}
 }

@@ -16,6 +16,13 @@ namespace DLiteAuthFrame.Domain.IRepository
         /// <returns></returns>
         IQueryable<Organization> GetOrgs(Guid UserID);
 
+        /// <summary>
+        /// 根据节点获取下级子节点信息
+        /// </summary>
+        /// <param name="OrgID"></param>
+        /// <returns></returns>
+        IQueryable<Organization> GetOrgNode(Guid OrgID);
+
         ///// <summary>
         ///// 删除指定ID
         ///// </summary>

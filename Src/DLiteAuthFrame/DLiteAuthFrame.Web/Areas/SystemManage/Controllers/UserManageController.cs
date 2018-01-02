@@ -17,7 +17,7 @@ namespace DLiteAuthFrame.Web.Areas.SystemManage.Controllers
 {
     public class UserManageController : Controller
     {
-        public IUserRepository _user { get; set; }
+       public IUserRepository _user { get; set; }
 
         public IUserManageApp userApp { get;set; }
         public IOrgManageApp orgApp { get; set; }
