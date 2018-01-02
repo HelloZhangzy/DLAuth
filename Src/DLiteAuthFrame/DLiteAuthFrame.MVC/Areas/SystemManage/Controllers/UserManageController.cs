@@ -64,7 +64,7 @@ namespace DLiteAuthFrame.MVC.Areas.SystemManage.Controllers
         [HttpGet]
         public ActionResult GetOrgUsers(string OrgID)
         {
-            if (string.IsNullOrWhiteSpace(OrgID)) return Content("");
+            if (string.IsNullOrWhiteSpace(OrgID)|| OrgID.Trim()=="#") return Content("");
 
             var retData = userApp.GetOrgUsers(Guid.Parse(OrgID));
             if (retData == null) return Content("");

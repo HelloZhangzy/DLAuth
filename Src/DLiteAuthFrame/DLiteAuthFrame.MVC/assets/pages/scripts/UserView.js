@@ -1,8 +1,7 @@
 ﻿var From = function () {
     var ajaxTree = function () {
         $("#OrgTree")
-        .on('changed.jstree', function (e, data) {
-             //   alert(data.instance.get_node(data.selected[0]).id);   
+        .on('changed.jstree', function (e, data) {             
                 LoadUserList(data.instance.get_node(data.selected[0]).id);        
           })
         .jstree({
@@ -20,60 +19,64 @@
     };
 
     var LoadUserList=function(rowid)
-    {    
-        jQuery("#UserList").jqGrid('setGridParam', { url: "/SystemManage/UserManage/GetOrgUsers?OrgID=" + rowid}).trigger('reloadGrid');
+    {
+        alert(rowid);
+        $("#UserList").bootstrapTable('refresh',{url: "/SystemManage/UserManage/GetOrgUsers?OrgID=" + rowid});
+        //jQuery("#UserList").jqGrid('setGridParam', { url: "/SystemManage/UserManage/GetOrgUsers?OrgID=" + rowid}).trigger('reloadGrid');
     }
 
-    var UserList=function(id) {
-        var $gridList = $("#UserList");
-        $gridList.jqGrid({          
-            gridview: true,
-            url: "/SystemManage/UserManage/GetOrgUsers",
-            datatype: "json",
-            colModel: [
-                { label: "主键", name: "UserCode", index: "", hidden: true, key: true },
-                { label: '姓名', name: 'UserName', index: "", width: 200, align: 'left' },
-                { label: '性别', name: 'Sex', index: "", width: 100, align: 'left',
-                    formatter: function (cellvalue) {
-                        return cellvalue == 0 ? "男" : "女";
-                    }},
-                { label: '登录名', name: 'LoginCode', index: "",  align: 'left' 
-                },
-                { label: '最后登录时间', name: 'LastLoginDate', index: "", width: 180, align: 'left', formatter: "date",formatoptions: {newformat: 'Y-m-d    H:i:s'}},
-                { label: '创建时间', name: 'CreaterDate', index: "", width: 180, align: 'left', formatter: "date", formatoptions: { newformat: 'Y-m-d    H:i:s'}  },
-                {
-                    label: "状态", name: "ibState", width: 100, align: "center",
-                    formatter: function (cellvalue) {
-                        return cellvalue == true ? "<i class=\"fa fa-toggle-on\"></i>" : "<i class=\"fa fa-toggle-off\"></i>";
-                    }
-                },
-                {
-                    name: '功能',
-                    width: 500,
-                    align: 'left',
-                    formatter: function (value, grid, rows, state) {
-                        var rid = rows.UserCode;
-                        var Edit = "UpdateData('" + rid + "')";
-                        var reset = "ResetPassWord('" + rid + "')";
-                        var str = rows.ibState == true ? "禁用" : "启用";
-                        var Update = "UpdateState('" + rid + "','" + str+"')";
-                        
-                        return '<input id="Edit" type="button" class="btn btn-success btn-xs" name="Submit" value="编辑"  onclick="' + Edit + '"/>'
-                            + '&nbsp;&nbsp;'
-                            + '<input id="reset" type="button" class="btn btn-warning btn-xs" value="重置密码" onclick="' + reset + '"/>'
-                            + '&nbsp;&nbsp;'
-                            + '<input id="Update" type="button" class="btn btn-danger btn-xs" value="' + str+'" onclick="' + Update + '"/>'
-                            ;
-                    }
-                }
-            ]
-        });
-    };
+
+    var TableInit = function () {      
+        $('#UserList').bootstrapTable({
+                url: "/SystemManage/UserManage/GetOrgUsers?OrgID=#",         //请求后台的URL（*）
+                method: 'get',                      //请求方式（*）
+                toolbar: '#toolbar',                //工具按钮用哪个容器
+                striped: true,                      //是否显示行间隔色
+                cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+                pagination: true,                   //是否显示分页（*）
+                sortable: false,                     //是否启用排序
+                sortOrder: "asc",                   //排序方式               
+                sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+                pageNumber: 1,                       //初始化加载第一页，默认第一页
+                pageSize: 10,                       //每页的记录行数（*）
+                pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+                search: false,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+                strictSearch: true,
+                showColumns: true,                  //是否显示所有的列
+                showRefresh: true,                  //是否显示刷新按钮
+                minimumCountColumns: 2,             //最少允许的列数
+                clickToSelect: true,                //是否启用点击选中行
+                height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                uniqueId: "UserCode",                     //每一行的唯一标识，一般为主键列
+                showToggle: true,                    //是否显示详细视图和列表视图的切换按钮
+                cardView: false,                    //是否显示详细视图
+                detailView: false,                   //是否显示父子表
+                columns: [{
+                    field: 'UserName',
+                    title: '姓名'
+                }, {
+                        field: 'Sex',
+                    title: '性别'
+                }, {
+                        field: 'LoginCode',
+                    title: '登录编号'
+                }, {
+                        field:'LastLoginDate',
+                        title: '最后登录时间'
+                }, {
+                        field: 'CreateUserCode',
+                    title: '创建时间'
+                },{
+                    field: 'UserExplain',
+                    title: '备注'
+                }]
+            });
+        };
 
     return {
         init: function () {                    
-            ajaxTree();
-            UserList();
+            ajaxTree();          
+            TableInit();
         }
     };
 }();

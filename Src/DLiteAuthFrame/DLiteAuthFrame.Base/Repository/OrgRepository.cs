@@ -21,7 +21,7 @@ namespace DLiteAuthFrame.Base.Repository
         {
             return from a in Context.Set<OrgUser>()
                    from b in Context.Set<Organization>()
-                   where a.UserCode == UserID && (a.OrgCode == b.OrgCode || a.OrgCode == b.ParentCode)
+                   where a.UserCode == UserID && (a.OrgCode == b.OrgCode)
                    select b;
         }
 
