@@ -18,7 +18,7 @@
             gridview: true,
             treeGridModel: "adjacency",
             ExpandColumn: "OrgName",
-            url: "/SystemManage/OrgManage/GetOrgs",            
+            url: "/SystemManage/OrgManage/GetOrgs",
             width: 300,
             height: $(window).height() - 96,
             colModel: [
@@ -27,7 +27,7 @@
                 { label: '机构', name: 'OrgName', index: "OrgName", width: 200, align: 'left' }
             ],
             beforeSelectRow: function (rowid, e)
-            {                
+            {
                 LoadUserList(rowid);
             }
 
@@ -41,13 +41,12 @@
     }
 
     function UserList(id) {
-
         var $gridList = $("#UserList");
         $gridList.dataGrid({
             treeGrid: false,
             gridview: true,
             url: "/SystemManage/UserManage/GetOrgUsers",
-            datatype: "json",          
+            datatype: "json",
             width: $(window).width()-300,
             height: $(window).height() - 96,
             colModel: [
@@ -73,7 +72,7 @@
                         var reset = "ResetPassWord('" + rid + "')";
                         var str = rows.ibState == true ? "禁用" : "启用";
                         var Update = "UpdateState('" + rid + "','" + str+"')";
-                        
+
                         return '<input id="Edit" type="button" class="btn btn-success btn-xs" name="Submit" value="编辑"  onclick="' + Edit + '"/>'
                             + '&nbsp;&nbsp;'
                             + '<input id="reset" type="button" class="btn btn-warning btn-xs" value="重置密码" onclick="' + reset + '"/>'
@@ -91,7 +90,7 @@
 
     };
 
-    function ResetPassWord(id) {        
+    function ResetPassWord(id) {
         $.modalOpen({
             id: 'Form',
             title: '重置密码',
@@ -109,7 +108,7 @@
             url: "/SystemManage/UserManage/UpdateState",
             prompt: "注：您确定要【" + value + "】该项数据吗？",
             param: { ID: id },
-            loading: "正在" + value+"数据...",           
+            loading: "正在" + value+"数据...",
             success: function () {
                 $.currentWindow().$("#UserList").resetSelection();
                 $.currentWindow().$("#UserList").trigger("reloadGrid");

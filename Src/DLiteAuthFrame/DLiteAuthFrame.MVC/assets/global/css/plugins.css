@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /******************************
  3RD PARTY PLUGIN CUSTOMIZATION 
 ******************************/
@@ -6,6 +6,15 @@
 /***
 Bootstrap Colorpicker
 ***/
+
+.fa .fa-toggle-on {
+    color:#00ff90;
+}
+
+.fa .fa-toggle-off {
+    color:red;
+}
+
 .input-group.color .input-group-btn i {
   position: absolute;
   display: block;

@@ -20,7 +20,7 @@ namespace DLiteAuthFrame.MVC.Areas.SystemManage.Controllers
         
         public ActionResult GetOrgNode(string OrgID)
         {            
-            if (string.IsNullOrWhiteSpace(OrgID))            
+            if (string.IsNullOrWhiteSpace(OrgID)|| OrgID=="#")
                 return Content(orgApp.Get_CurrUser_OrgNode().ToJson());
             else
                 return Content(orgApp.Get_Org_OrgNode(Guid.Parse(OrgID)).ToJson());
